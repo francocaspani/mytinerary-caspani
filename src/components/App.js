@@ -4,6 +4,7 @@ import Header2 from './Header';
 import bgvideo from '../video/bgvideo.mp4';
 import Carousel from './Carousel';
 import data from '../data';
+import FancyButton from './CallToAction';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
         <div className='hero-container'>
           <h1>My Tinerary</h1>
           <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
+          <FancyButton className='button' />
         </div>
+        
       
       </div>
         <div className='carousel-container'>

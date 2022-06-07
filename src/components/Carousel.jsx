@@ -1,43 +1,40 @@
-
+import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-
 import "../stylesheets/carousel.css";
+import "swiper/css/navigation";
 
 // import required modules
-import { Grid, Pagination } from "swiper";
+import { Grid, Pagination, Navigation } from "swiper";
 
 export default function Carousel(props) {
   return (
     <>
+      <h1 className="title-carousel">Popular MYtineraries</h1>
       <Swiper
         slidesPerView={2}
         grid={{
           rows: 2,
         }}
-        spaceBetween={5}
+        spaceBetween={10}
         slidesPerGroup={2}
         pagination={{
-          clickable: true,
+          clickable: true
         }}
-        modules={[Grid, Pagination]}
+        navigation={true}
+        modules={[Grid, Pagination, Navigation]}
         className="mySwiper"
       >
+        {props.data && props.data.map(item =>
+          <SwiperSlide className="item-carousel"><img src={item.img} alt={item.city} className='img-carousel' /><p className="text-carousel">{item.city}</p></SwiperSlide>
+        )}
 
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
     </>
   );

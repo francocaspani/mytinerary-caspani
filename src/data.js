@@ -37,7 +37,7 @@ const data = [
     {   
         id : 8,
         city : 'San Francisco',
-        img : 'sanFrancisco.jpeg'
+        img : 'san-francisco.jpeg'
     },
     {   
         id : 9,

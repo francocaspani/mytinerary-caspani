@@ -11,13 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import logo from '../img/logo.png'
 import '../stylesheets/header.css'
 
 const pages = ['Home', 'Cities'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Logout'];
 
-const Header2 = () => {
+const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,10 +36,10 @@ const Header2 = () => {
   };
 
   return (
-    <AppBar position="static" sx= {{backgroundColor : 'rgba(0, 0, 0, 0.578)'}}>
+    <AppBar className='header' position="static" sx= {{backgroundColor : 'rgba(0, 0, 0, 0)', boxShadow:'none'}}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-        <Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}><img src={logo} alt="Logo" className='logo' /></Box>
+        <Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box>
           <Typography
             className='font-header'
             variant="h6"
@@ -97,13 +96,13 @@ const Header2 = () => {
               ))}
             </Menu>
           </Box>
-          <Box component="span" sx={{flexGrow: 1 , display: { xs: 'flex', md: 'none' }, mr: 1 }}><img src={logo} alt="Logo" className='logo' /></Box>
+          <Box component="span" sx={{flexGrow: 1 , display: { xs: 'flex', md: 'none' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'flex-end' }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ m: 3, color: 'white', display: 'block' , fontSize:'', border:'solid'}}
               >
                 {page}
               </Button>
@@ -144,4 +143,4 @@ const Header2 = () => {
     </AppBar>
   );
 };
-export default Header2;
+export default Header;

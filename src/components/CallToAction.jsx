@@ -68,10 +68,10 @@ export default class FancyButton extends React.Component {
 
 FancyButton.defaultProps = {
 	color: '#FFFFFF',
-	width: 400,
-	height: 100,
+	width: 250,
+	height: 70,
 	fontSize: 25,
 	borderWidth: 15,
-     buttonText: 'FIND YOUR NEXT EXPERIENCE',
+    buttonText: 'GET ME THERE!',
 };
 

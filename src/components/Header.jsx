@@ -89,9 +89,9 @@ const Header = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <LinkRouter className='link' to={page.path} >
-                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+              {pages.map((page,index) => (
+                <LinkRouter key={index} className='link' to={page.path} >
+                  <MenuItem onClick={handleCloseNavMenu}>
                   <Typography className='font-header' textAlign="center" sx={{color: 'black'}}>{page.name} </Typography>
                 </MenuItem>
                 </LinkRouter>
@@ -101,9 +101,8 @@ const Header = () => {
           </Box>
           <Box component="span" sx={{flexGrow: 1 , display: { xs: 'flex', md: 'none' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'flex-end' }}>
-            {pages.map((page) => (
-              <LinkRouter className='link' to={page.path}><Button className='button'
-                key={page.name}
+            {pages.map((page,index) => (
+              <LinkRouter key={index} className='link' to={page.path}><Button className='button'
                 onClick={handleCloseNavMenu}
                 sx={{ m: 3, color: 'white', display: 'block' , fontSize:'', border:'solid'}}
               >
@@ -135,8 +134,8 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <LinkRouter className='link' to={setting.path}><MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+              {settings.map((setting,index) => (
+                <LinkRouter key={index} className='link' to={setting.path}><MenuItem  onClick={handleCloseUserMenu}>
                   <Typography sx={{color: 'black'}} textAlign="center">{setting.name}</Typography>
                 </MenuItem></LinkRouter>
                 

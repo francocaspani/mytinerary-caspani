@@ -19,9 +19,9 @@ export default function Footer() {
         <img className='logo-footer' src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
 
         <div className='nav-footer'>
-          {pages.map((page) => (
-            <LinkRouter className="link" to={page.path}>
-              <Button className="button" key={page} sx={{ m: 1, color: 'white', display: 'flex' }}>
+          {pages.map((page,index) => (
+            <LinkRouter key={index} className="link" to={page.path}>
+              <Button className="button"  sx={{ m: 1, color: 'white', display: 'flex' }}>
                 {page.name}
               </Button> </LinkRouter>
           ))}

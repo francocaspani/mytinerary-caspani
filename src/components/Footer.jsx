@@ -12,16 +12,16 @@ export default function Footer() {
     <div className="footer">
       <div className='components-footer'>
         <div className='redes-footer'>
-          <GitHubIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} />
-          <InstagramIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} />
-          <TwitterIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} />
+          <a href="https://github.com/francocaspani"><GitHubIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
+          <a href="https://www.instagram.com/franco.cspn/"><InstagramIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
+          <a href="https://twitter.com/francocasp"><TwitterIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
         </div>
         <img className='logo-footer' src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
 
         <div className='nav-footer'>
           {pages.map((page) => (
             <LinkRouter className="link" to={page.path}>
-              <Button className="button" key={page} sx={{ m: 1, color: 'white', display: 'flex', border: 'solid' }}>
+              <Button className="button" key={page} sx={{ m: 1, color: 'white', display: 'flex' }}>
                 {page.name}
               </Button> </LinkRouter>
           ))}

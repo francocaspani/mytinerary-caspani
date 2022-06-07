@@ -2,10 +2,11 @@
 import '../stylesheets/App.css';
 import Header from './Header';
 import bgvideo from '../video/bgvideo.mp4';
-import Carousel from './Carousel';
-import data from '../data';
-import Hero from './Hero';
 import Footer from './Footer';
+import { Route, Routes } from 'react-router-dom';
+import PageHome from '../pages/PageHome';
+import PageUnderConstruction from '../pages/PageUnderConstruction';
+import NotFoundPage from '../pages/NotFoundPage';
 
 function App() {
   return (
@@ -14,8 +15,12 @@ function App() {
         <video src={bgvideo} autoPlay loop muted className='video-bg'>
         </video>
         <Header />
-        <Hero />
-        <Carousel data = {data}/>
+        <Routes>
+          <Route path='/home' element={<PageHome />} />
+          <Route path='/' element={<PageHome />} />
+          <Route path='/underConstruction' element={<PageUnderConstruction />} />
+          <Route path='/*' element={<NotFoundPage />} />
+        </Routes>
         <Footer />
       </div>
     </div>

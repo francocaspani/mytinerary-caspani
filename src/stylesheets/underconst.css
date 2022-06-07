@@ -1,0 +1,11 @@
+.construction-container{
+    background-color: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    color: white;
+    text-align: center;
+}
+

@@ -12,9 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import '../stylesheets/header.css'
+import {Link as LinkRouter} from "react-router-dom"
 
-const pages = ['Home', 'Cities'];
-const settings = ['Profile', 'Account', 'Logout'];
+const pages = [{ name: 'Home', path: '/' }, { name: 'Cities', path: '/underConstruction' }]
+const settings = [{name: 'Profile', path: '/underConstruction'}, {name: 'Account', path: '/underConstruction'}, {name: 'Logout', path:'/underConstruction'}];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,13 +40,12 @@ const Header = () => {
     <AppBar className='header' position="static" sx= {{backgroundColor : 'rgba(0, 0, 0, 0)', boxShadow:'none'}}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-        <Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box>
+        <LinkRouter to='/' ><Box component="span" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box></LinkRouter> 
           <Typography
             className='font-header'
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               p: 2,
               mr: 2,
@@ -90,22 +90,26 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography className='font-header' textAlign="center">{page} </Typography>
+                <LinkRouter className='link' to={page.path} >
+                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography className='font-header' textAlign="center" sx={{color: 'black'}}>{page.name} </Typography>
                 </MenuItem>
+                </LinkRouter>
+                
               ))}
             </Menu>
           </Box>
           <Box component="span" sx={{flexGrow: 1 , display: { xs: 'flex', md: 'none' }, mr: 1 }}><img src={process.env.PUBLIC_URL+"/assets/img/logo.png"} alt="Logo" className='logo' /></Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'flex-end' }}>
             {pages.map((page) => (
-              <Button
-                key={page}
+              <LinkRouter className='link' to={page.path}><Button className='button'
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ m: 3, color: 'white', display: 'block' , fontSize:'', border:'solid'}}
               >
-                {page}
-              </Button>
+                {page.name}
+              </Button> </LinkRouter>
+              
             ))}
           </Box>
 
@@ -132,9 +136,10 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <LinkRouter className='link' to={setting.path}><MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <Typography sx={{color: 'black'}} textAlign="center">{setting.name}</Typography>
+                </MenuItem></LinkRouter>
+                
               ))}
             </Menu>
           </Box>

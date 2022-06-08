@@ -8,7 +8,6 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   height: calc((100% - 30px) / 2) !important;
 
   /* Center slide text vertically */
@@ -40,12 +39,12 @@
 }
 
 .text-carousel {
-  background-color: rgba(0, 0, 0, 0.578);
+  background-color: rgba(0, 0, 0, 0.40);
   position: absolute;
   width: 100%;
   color: white;
   font-weight: 300;
-  font-size: larger;
+  font-size: 100%;
 }
 
 .title-carousel {
@@ -54,4 +53,16 @@
   font-weight: 800;
   font-style: italic;
   text-align: center;
+}
+
+.swiper-button-next{
+  right: -3px!important;
+}
+
+.swiper-button-prev{
+  left: -3px!important;
+}
+
+.mySwiper{
+  margin: 0;
 }

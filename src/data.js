@@ -21,7 +21,7 @@ const data = [
     },
     {   
         id : 5,
-        city : 'Cophenaguen',
+        city : 'Copenhagen',
         img : 'cophenaguen.jpeg'
     },
     {   
@@ -31,7 +31,7 @@ const data = [
     },
     {   
         id : 7,
-        city : 'Roma',
+        city : 'Rome',
         img : 'roma.jpeg'
     },
     {   

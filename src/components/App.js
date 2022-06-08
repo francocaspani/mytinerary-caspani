@@ -8,20 +8,26 @@ import PageHome from '../pages/PageHome';
 import PageUnderConstruction from '../pages/PageUnderConstruction';
 import NotFoundPage from '../pages/NotFoundPage';
 
+
+
+
 function App() {
+
+  const pages = [{ name: 'Home', path: '/' }, { name: 'Cities', path: '/underConstruction' }]
+
   return (
     <div className="App">
       <div className='main-container'>
         <video src={bgvideo} autoPlay loop muted className='video-bg'>
         </video>
-        <Header />
+        <Header pages={pages} />
         <Routes>
           <Route path='/home' element={<PageHome />} />
           <Route path='/' element={<PageHome />} />
           <Route path='/underConstruction' element={<PageUnderConstruction />} />
           <Route path='/*' element={<NotFoundPage />} />
         </Routes>
-        <Footer />
+        <Footer pages={pages} />
       </div>
     </div>
   );

@@ -16,13 +16,13 @@ export default function Carousel(props) {
   return (
     <>
     <div className='carousel-container'>
-      <h1 className="title-carousel">Popular MYtineraries</h1>
+      <h1 className="title-carousel">Popular MyTineraries</h1>
       <Swiper
         slidesPerView={2}
         grid={{
           rows: 2,
         }}
-        spaceBetween={30}
+        spaceBetween={20}
         slidesPerGroup={2}
         autoplay={{
           delay: 5000,

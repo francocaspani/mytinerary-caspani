@@ -5,10 +5,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import '../stylesheets/footer.css';
 
-const pages = [{ name: 'Home', path: '/' }, { name: 'Cities', path: '/underConstruction' }]
-export default function Footer() {
+export default function Footer(props) {
   return (
-    
+
     <div className="footer">
       <div className='components-footer'>
         <div className='redes-footer'>
@@ -17,11 +16,10 @@ export default function Footer() {
           <a href="https://twitter.com/francocasp"><TwitterIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
         </div>
         <img className='logo-footer' src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
-
         <div className='nav-footer'>
-          {pages.map((page,index) => (
+          {props.pages && props.pages.map((page, index) => (
             <LinkRouter key={index} className="link" to={page.path}>
-              <Button className="button"  sx={{ m: 1, color: 'white', display: 'flex' }}>
+              <Button className="button" sx={{ m: 1, color: 'white', display: 'flex' }}>
                 {page.name}
               </Button> </LinkRouter>
           ))}

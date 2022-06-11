@@ -15,9 +15,9 @@ const useScrollToTop = () => {
 export default function PageHome() {
   useScrollToTop()
   return (
-    <>
+    <div className='body-home'>
       <Hero />
       <Carousel data={data} />
-    </>
+    </div>
   )
 }

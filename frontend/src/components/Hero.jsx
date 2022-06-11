@@ -6,7 +6,7 @@ export default function Hero() {
     <div className='hero-container'>
       <h1>My Tinerary</h1>
       <p>Find your perfect trip, designed by insiders who know and love their cities!</p>
-      <LinkRouter to='/underConstruction' ><FancyButton className='button' /></LinkRouter>
+      <LinkRouter to='/cities' ><FancyButton className='button' /></LinkRouter>
     </div>
   )
 }

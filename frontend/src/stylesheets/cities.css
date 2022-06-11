@@ -1,0 +1,40 @@
+label{
+    color: black!important;
+}
+.MuiInput-underline {
+    width: 90%!important;
+}
+
+
+
+.body-cities{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.40);
+    margin: 2rem;
+    border-radius: .5rem;
+    backdrop-filter: blur(1px);
+}
+.container-input{
+    margin-top: .8rem;
+    width: 50%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.558);
+    border-radius: 1rem;
+}
+
+.container-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+}

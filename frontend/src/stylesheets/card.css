@@ -1,0 +1,86 @@
+
+.card p {
+  font-family: "Monserrat";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 14px;
+  margin: 0.7rem 1rem;
+}
+
+
+.card, .img-card {
+  width: 250px;
+  border-radius: 15px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card {
+  transition: 1s;
+  overflow: hidden;
+  height: 350px;
+  box-shadow: 5px 5px 30px #9d9d9d, -5px -5px 50px #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-2%);
+
+}
+
+.card:hover .content {
+  transition: 1s;
+  top: -50%;
+  opacity: 1;
+}
+.content h1 {
+  font-size: 23px;
+  color: rgb(0, 0, 0);
+  margin: 0.7rem 0;
+  margin-top: 2rem;
+  opacity: 1;
+}
+.content {
+  padding: 1rem 0.7rem;
+  position: relative;
+  opacity: 0;
+  display: flex;
+  box-shadow: none;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0;
+  text-align: center;
+}
+
+
+
+.content h3 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+.button-card {
+  margin: 1rem;
+  border: 5px solid rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+  padding: 0.7rem 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.button-card:hover {
+  transition: 1s;
+  background: #ffffff;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+  color: black
+}

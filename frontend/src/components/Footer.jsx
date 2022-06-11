@@ -11,9 +11,9 @@ export default function Footer(props) {
     <div className="footer">
       <div className='components-footer'>
         <div className='redes-footer'>
-          <a target='_blank' href="https://github.com/francocaspani"><GitHubIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
-          <a target='_blank' href="https://www.instagram.com/franco.cspn/"><InstagramIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
-          <a target='_blank' href="https://twitter.com/francocasp"><TwitterIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
+          <a target='_blank' rel="noreferrer" href="https://github.com/francocaspani"><GitHubIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
+          <a target='_blank' rel="noreferrer" href="https://www.instagram.com/franco.cspn/"><InstagramIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
+          <a target='_blank' rel="noreferrer" href="https://twitter.com/francocasp"><TwitterIcon className='redes-footer' sx={{ m: '1rem', color: 'white' }} /></a>
         </div>
         <img className='logo-footer' src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
         <div className='nav-footer'>

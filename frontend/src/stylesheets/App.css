@@ -5,6 +5,10 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 font-family: 'Montserrat', sans-serif;
+transition: .5s;
+}
+body{
+  padding-right: 0!important;
 }
 .App{
   display: flex;
@@ -49,7 +53,21 @@ font-family: 'Montserrat', sans-serif;
     gap: .5rem
   }  
 }
-
+.scrollToTop{
+    position: fixed;
+    right: 150px;
+    top: 78%;
+    width: 60px;
+    height: 60px;
+    background: none;
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    border-style: none;
+}
+.scrollToTop:hover{
+  transform: scale(1.1);
+  background-color: white;
+}
 
 .hero-container p{
   font-weight: 300;

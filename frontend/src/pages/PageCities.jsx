@@ -3,9 +3,20 @@ import '../stylesheets/cities.css';
 import data from '../data';
 import Card from '../components/Card';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+
+const useScrollToTop = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0 , behavior: 'smooth'});
+  }, [location]);
+};
 
 
 export default function PageCities(){
+  useScrollToTop()
   const [textFilter, setTextFilter]= useState('')
   const handleTextSearch = (event) => {
     setTextFilter(event.target.value)

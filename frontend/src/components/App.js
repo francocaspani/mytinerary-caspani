@@ -8,6 +8,7 @@ import PageUnderConstruction from '../pages/PageUnderConstruction';
 import NotFoundPage from '../pages/NotFoundPage';
 import PageCities from '../pages/PageCities';
 import ScrollToTop from "react-scroll-to-top";
+import PageDetails from '../pages/PageDetails';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/underConstruction' element={<PageUnderConstruction />} />
           <Route path='/*' element={<NotFoundPage />} />
           <Route path='/cities' element={<PageCities />} />
+          <Route path='/cities/:id' element={<PageDetails />} />
         </Routes>
         <Footer pages={pages} />
         <ScrollToTop

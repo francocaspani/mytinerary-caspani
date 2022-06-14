@@ -1,5 +1,5 @@
 
-.card p {
+.card2 p {
   font-family: "Monserrat";
   position: absolute;
   bottom: 0;
@@ -9,26 +9,26 @@
 }
 
 
-.card, .img-card {
+.card2, .img-card {
   width: 250px;
   border-radius: 15px;
   height: 100%;
   object-fit: cover;
 }
 
-.card {
+.card2 {
   transition: 1s;
   overflow: hidden;
   height: 350px;
   box-shadow: 5px 5px 30px #9d9d9d, -5px -5px 50px #ffffff;
 }
 
-.card:hover {
+.card2:hover {
   transform: translateY(-2%);
 
 }
 
-.card:hover .content {
+.card2:hover .content {
   transition: 1s;
   top: -50%;
   opacity: 1;
@@ -82,4 +82,24 @@
   background: #ffffff;
   box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
   color: black
+}
+.city-name{
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background-color: rgba(255, 255, 255, 0.523);
+  border-radius: .5rem;
+  padding: .5rem;
+  color: black;
+}
+
+.card2:hover .city-name{
+  opacity: 0;
+}
+
+@media screen and (max-width:425px){
+  .card2{
+    height: 250px;
+  }
+  
 }

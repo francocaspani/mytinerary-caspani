@@ -1,3 +1,4 @@
+
 label{
     color: black!important;
 }
@@ -5,21 +6,6 @@ label{
     width: 90%!important;
 }
 
-
-
-.body-cities{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.40);
-    margin: 2rem;
-    border-radius: .5rem;
-    backdrop-filter: blur(1px);
-    margin-bottom: 5rem;
-}
 .container-input{
     margin-top: .8rem;
     width: 50%;
@@ -37,4 +23,156 @@ label{
     justify-content: center;
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
+.container-cards h1{
+    color: white;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.40);
+    margin: 2rem;
+    border-radius: .5rem;
+    backdrop-filter: blur(1px);
+    margin-bottom: 5rem;
+}
+
+.main-image {
+    z-index: 1;
+    border-radius: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-title {
+    font-size: 30px;
+    line-height: 1;
+    color: #ffffff;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.title-scroll {
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+
+.button-scroll {
+    padding: .5rem;
+    border: 5px solid black;
+    cursor: pointer;
+    margin: 1rem;
+    background-color: #fff;
+}
+.button-scroll:hover {
+    color: #fff;
+    background-color: #000000;
+}
+.title-scroll:hover{
+    color: #fff;
+}
+.pin {
+    background: #fff;
+    color: #000000;
+    width: 10px;
+    height: 10px;
+    z-index: 2;
+    position: absolute;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+    animation: pulse 2s infinite;
+}
+
+.pin-wrapper {
+    position: absolute;
+}
+
+.pin-wrapper:hover .card {
+    opacity: 1;
+    visibility: visible;
+    margin-top: -50px;
+}
+
+.card {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease 0.3s all;
+    flex-direction: row;
+    border-radius: .5rem;
+    box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    color: #000000;
+    z-index: 3;
+    gap: 1rem;
+    position: absolute;
+    cursor: pointer;
+    padding: 5px;
+    width: 250px;
+    height: 130px;
+    margin-left: -100px;
+    margin-top: -30px;
+}
+
+.card-image {
+    width: 120px;
+    height: 120px;
+    border-radius: .5rem;
+}
+
+.card-title {
+    padding-top: 10px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.card-button {
+    color: #000000;
+    text-transform: uppercase;
+    border: 1px solid #000000;
+    text-decoration: none;
+    padding: 8px 10px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+
+@media screen and (max-width:425px) {
+    .image-wrapper {
+        display: none;
+    }
+    .button-scroll{
+        display: none;
+    }
 }

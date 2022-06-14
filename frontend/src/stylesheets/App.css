@@ -55,8 +55,8 @@ body{
 }
 .scrollToTop{
     position: fixed;
-    right: 150px;
-    top: 78%;
+    right: 10%;
+    top: 74%;
     width: 60px;
     height: 60px;
     background: none;

@@ -100,6 +100,9 @@
 @media screen and (max-width:425px){
   .card2{
     height: 250px;
+    
   }
-  
+  .card2:hover .content{
+    top: -75%;
+  }
 }

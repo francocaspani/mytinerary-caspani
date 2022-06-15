@@ -168,11 +168,17 @@ label{
 }
 
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:768px) {
     .image-wrapper {
         display: none;
     }
     .button-scroll{
         display: none;
     }
+}
+@media screen and (max-width:425px) {
+    .main-wrapper{
+        margin: 0
+    }
+    
 }

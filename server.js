@@ -1,11 +1,15 @@
 require('dotenv').config()
 require('./config/database')
-
 const express = require('express')
-const app = express()
+const Router = require('./routes/routes')
+const cors = require('cors')
 
+const app = express()
 const PORT = 4000
-const hola = 20
+app.use(express.json())
+app.use(cors())
+app.use('/api', Router)
+
 app.set('port', PORT)
 
 app.get('/', (req,res) => {

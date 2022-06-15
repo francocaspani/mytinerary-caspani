@@ -36,7 +36,7 @@ export default function Carousel(props) {
         className="mySwiper"
       >
         {props.data && props.data.map(item =>
-          <SwiperSlide key={item.id} className="item-carousel"><img src={process.env.PUBLIC_URL+`/assets/img/${item.img}`} alt={item.city} className='img-carousel' /><p className="text-carousel">{item.city}</p></SwiperSlide>
+          <SwiperSlide key={item._id} className="item-carousel"><img src={process.env.PUBLIC_URL+`/assets/img/${item.img}`} alt={item.name} className='img-carousel' /><p className="text-carousel">{item.name}</p></SwiperSlide>
         )}
 
       </Swiper> 

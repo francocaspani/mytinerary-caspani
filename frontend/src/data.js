@@ -1,7 +1,7 @@
 const data = [
     {   
         id : 1,
-        city : 'Melbourne',
+        name : 'Melbourne',
         img : 'melbourne.jpeg',
         country : 'Australia',
         left : 85,
@@ -9,7 +9,7 @@ const data = [
     },
     {   
         id : 2,
-        city : 'Venice',
+        name : 'Venice',
         img : 'venice.jpeg',
         country : 'Italy',
         left : 49,
@@ -17,7 +17,7 @@ const data = [
     },
     {   
         id : 3,
-        city : 'Buenos Aires',
+        name : 'Buenos Aires',
         img : 'bsas.jpg',
         country : 'Argentina',
         left : 29,
@@ -25,7 +25,7 @@ const data = [
     },
     {   
         id : 4,
-        city : 'Aarhus',
+        name : 'Aarhus',
         img : 'aarhus.jpeg',
         country : 'Denmark',
         left : 48,
@@ -33,7 +33,7 @@ const data = [
     },
     {   
         id : 5,
-        city : 'Copenhagen',
+        name : 'Copenhagen',
         img : 'cophenaguen.jpeg',
         country : 'Denmark',
         left : 48.5,
@@ -41,7 +41,7 @@ const data = [
     },
     {   
         id : 6,
-        city : 'Sydney',
+        name : 'Sydney',
         img : 'sydney.jpeg',
         country : 'Australia',
         left : 87,
@@ -49,7 +49,7 @@ const data = [
     },
     {   
         id : 7,
-        city : 'Rome',
+        name : 'Rome',
         img : 'roma.jpeg',
         country : 'Italy',
         left : 49,
@@ -57,7 +57,7 @@ const data = [
     },
     {   
         id : 8,
-        city : 'San Francisco',
+        name : 'San Francisco',
         img : 'san-francisco.jpeg',
         country : 'U.S.A.',
         left : 12,
@@ -65,7 +65,7 @@ const data = [
     },
     {   
         id : 9,
-        city : 'Brisbane',
+        name : 'Brisbane',
         img : 'brisbane.jpeg',
         country : 'Australia',
         left : 88.5,
@@ -73,7 +73,7 @@ const data = [
     },
     {   
         id : 10,
-        city : 'Berlin',
+        name : 'Berlin',
         img : 'berlin.jpeg',
         country : 'Germany',
         left : 49,
@@ -81,7 +81,7 @@ const data = [
     },
     {   
         id : 11,
-        city : 'Stockholm',
+        name : 'Stockholm',
         img : 'stockholm.jpeg',
         country : 'Sweden',
         left : 50,
@@ -89,7 +89,7 @@ const data = [
     },
     {   
         id : 12,
-        city : 'Cordoba',
+        name : 'Cordoba',
         img : 'cordoba.jpeg',
         country : 'Argentina',
         left : 27.8,

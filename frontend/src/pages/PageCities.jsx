@@ -33,7 +33,7 @@ function PageCities() {
   useEffect(() => {
     axios.get('http://localhost:4000/api/cities')
       .then(response => {
-        let citiesToDisplay = response.data.response.cities.filter(cities => cities.name.toLocaleLowerCase().startsWith(textFilter.trim().toLocaleLowerCase()))
+        let citiesToDisplay = response.data.response.cities.filter(cities => cities.name.toLowerCase().startsWith(textFilter.trim().toLowerCase()))
         setCities(citiesToDisplay)
       }
       )

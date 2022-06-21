@@ -68,6 +68,7 @@ label{
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
+    transition: .5s;
 }
 
 .button-scroll {
@@ -76,10 +77,12 @@ label{
     cursor: pointer;
     margin: 1rem;
     background-color: #fff;
+    transition: .5s;
 }
 .button-scroll:hover {
     color: #fff;
     background-color: #000000;
+    transition: .5s;
 }
 .title-scroll:hover{
     color: #fff;

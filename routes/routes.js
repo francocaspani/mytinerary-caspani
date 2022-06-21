@@ -12,4 +12,19 @@ Router.route('/cities/:id')
 .put(modifyCity)
 .get(getOneCity)
 
+const itinerariesControllers = require('../controllers/itinerariesControllers');
+const {getItineraries, getOneItinerary, addItinerary, modifyItinerary, removeItinerary, readItineraries} = itinerariesControllers
+
+Router.route('/itineraries')
+.get(getItineraries)
+.post(addItinerary)
+
+Router.route('/itineraries/:id')
+.delete(removeItinerary)
+.put(modifyItinerary)
+.get(getOneItinerary)
+
+Router.route('/itinerariesByCity/:id')
+.get(readItineraries)
+
 module.exports = Router

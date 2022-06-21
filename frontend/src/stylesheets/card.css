@@ -91,6 +91,7 @@
   border-radius: .5rem;
   padding: .5rem;
   color: black;
+  transition: .5s;
 }
 
 .card2:hover .city-name{

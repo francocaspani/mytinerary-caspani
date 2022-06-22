@@ -5,7 +5,11 @@ import { useLocation } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Card from '../components/Card';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-const axios = require('axios');
+import citiesActions from '../redux/actions/citiesActions';
+import { connect } from 'react-redux';
+
+
+
 
 const useScrollToTop = () => {
   const location = useLocation();
@@ -18,28 +22,32 @@ const useScrollToTop = () => {
 
 
 
-function PageCities() {
+function PageCities(props) {
   useScrollToTop()
   const myRef = useRef(null)
   const executeScroll = () => window.scrollTo({ behavior: 'smooth', top: myRef.current.offsetTop })
 
   const [textFilter, setTextFilter] = useState('')
-  const [cities, setCities] = useState([])
+  // const [cities, setCities] = useState([])
 
   const handleTextSearch = (event) => {
     setTextFilter(event.target.value)
   }
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/api/cities')
-      .then(response => {
-        let citiesToDisplay = response.data.response.cities.filter(cities => cities.name.toLowerCase().startsWith(textFilter.trim().toLowerCase()))
-        setCities(citiesToDisplay)
-      }
-      )
-  }, [textFilter])
+  // useEffect(() => {
+  //   axios.get('http://localhost:4000/api/cities')
+  //     .then(response => {
+  //       let citiesToDisplay = response.data.response.cities.filter(cities => cities.name.toLowerCase().startsWith(textFilter.trim().toLowerCase()))
+  //       setCities(citiesToDisplay)
+  //     }
+  //     )
+  // }, [textFilter])
 
-
+  useEffect(()=>{
+    props.filterCities(props.cities,textFilter)
+    // eslint-disable-next-line
+  },[textFilter])
+  console.log(props.citiesFiltered)
 
   return (
     <div className="main-wrapper">
@@ -49,12 +57,23 @@ function PageCities() {
       <div className='container-input'><TextField
         onKeyUp={handleTextSearch}
         sx={{ mx: 1 }} id="search-cities" label="Search" variant="standard" /></div>
-      <Map cities={cities} />
+      <Map cities={props.citiesFiltered} />
       <div className='container-cards' ref={myRef}>
-        {cities.length > 0 ? cities.map(city => <Card key={city._id} city={city} />) : <h1>No cities availables</h1>}
+        {props.citiesFiltered.length > 0 ? props.citiesFiltered.map(city => <Card key={city._id} city={city} />) : <h1>No cities availables</h1>}
       </div>
     </div>
   )
 }
 
-export default PageCities;
+const mapDispatchToProps = {
+  filterCities : citiesActions.filterCities
+}
+
+const mapStateToProps = (state =>{
+  return {
+    cities: state.citiesReducer.cities,
+    citiesFiltered: state.citiesReducer.citiesFiltered
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps) (PageCities);

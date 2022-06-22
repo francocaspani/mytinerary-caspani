@@ -1,4 +1,5 @@
 import '../stylesheets/App.css';
+import { useEffect } from 'react';
 import Header from './Header';
 import bgvideo from '../video/bgvideo.mp4';
 import Footer from './Footer';
@@ -9,10 +10,17 @@ import NotFoundPage from '../pages/NotFoundPage';
 import PageCities from '../pages/PageCities';
 import ScrollToTop from "react-scroll-to-top";
 import PageDetails from '../pages/PageDetails';
+import { connect } from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions';
 
 
 
-function App() {
+function App(props) {
+
+  useEffect(()=>{
+    props.getCities()
+    // eslint-disable-next-line
+  },[])
 
   const pages = [{ name: 'Home', path: '/' }, { name: 'Cities', path: '/cities' }]
 
@@ -42,4 +50,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  getCities : citiesActions.getCities
+}
+
+export default connect(null, mapDispatchToProps) (App);

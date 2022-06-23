@@ -1,7 +1,7 @@
 .body-details{
     display: flex;
+    height: 50vh;
     flex-grow: 1;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.40);
     margin-top: 3rem;
     margin-bottom: 5rem;
@@ -12,7 +12,6 @@
 
 .img-details{
     width: 50%;
-    height: 70vh;
     object-fit: cover;
     border-radius: .5rem 0 0 .5rem;
 }
@@ -27,7 +26,7 @@
 }
 
 .title-details{
-    margin: 2rem;
+    margin-top: 1rem;
     text-align: center;
 }
 

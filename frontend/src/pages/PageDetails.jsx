@@ -1,29 +1,28 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import '../stylesheets/details.css';
 import citiesActions from '../redux/actions/citiesActions';
-import { connect } from "react-redux";
-const axios = require('axios');
+import { useDispatch, useSelector } from "react-redux";
+import itinerariesActions from "../redux/actions/itinerariesActions";
+import AnimatedList from "../components/Itinerary";
 
 
 
-function PageDetails(props) {
+
+function PageDetails() {
 
     let navigate = useNavigate()
     const { id } = useParams()
-    // const [city, setCity] = useState()
-
-
-    // useEffect(() => {
-    //     axios.get(`http://localhost:4000/api/cities/${id}`)
-    //         .then(response => setCity(response.data.response.city))
-    // }, [id])
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        props.getOneCity(id)
+        dispatch(citiesActions.getOneCity(id))
+        dispatch(itinerariesActions.getItinerariesByCity(id))
+        // eslint-disable-next-line
     }, [id])
-
-    let city = props.city
+    const itinerariesByCity =useSelector(store => store.itinerariesReducer.itinerariesByCity)
+    console.log(itinerariesByCity)
+    const city = useSelector(store => store.citiesReducer.city)
 
     function handleNavigate() {
         navigate(-1)
@@ -39,6 +38,7 @@ function PageDetails(props) {
                         <div className="text-details">
                             <h1 className="title-details">{city.name}</h1>
                             <h3>{city.country}</h3>
+                            <AnimatedList />
                         </div>
                     </div>
                 </>}
@@ -48,15 +48,4 @@ function PageDetails(props) {
     )
 }
 
-const mapDispatchToProps = {
-    getOneCity: citiesActions.getOneCity
-}
-
-const mapStateToProps = (state => {
-    return {
-        city: state.citiesReducer.city
-    }
-})
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageDetails);
+export default PageDetails;

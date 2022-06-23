@@ -19,9 +19,6 @@ const useScrollToTop = () => {
 };
 
 
-
-
-
 function PageCities(props) {
   useScrollToTop()
   const myRef = useRef(null)
@@ -44,7 +41,7 @@ function PageCities(props) {
   // }, [textFilter])
 
   useEffect(()=>{
-    props.filterCities(props.cities,textFilter)
+    props.filterCities(textFilter)
     // eslint-disable-next-line
   },[textFilter])
   console.log(props.citiesFiltered)

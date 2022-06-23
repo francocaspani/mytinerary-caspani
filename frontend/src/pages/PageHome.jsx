@@ -2,7 +2,7 @@ import Hero from '../components/Hero';
 import Carousel from '../components/Carousel';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const useScrollToTop = () => {
@@ -13,17 +13,10 @@ const useScrollToTop = () => {
 };
 
 
-function PageHome(props) {
+function PageHome() {
   useScrollToTop()
-  // const [cities, setCities] = useState()
 
-  // useEffect(()=>{
-  //   axios.get('http://localhost:4000/api/cities')
-  //     .then(response => setCitiesApi(response.data.response.cities))
-  // },[])
-
-  const cities = props.cities
-
+  const cities = useSelector(store => store.citiesReducer.cities)
 
   return (
     <div className='body-home'>
@@ -34,10 +27,4 @@ function PageHome(props) {
 }
 
 
-const mapStateToProps = (state =>{
-  return {
-    cities: state.citiesReducer.cities
-  }
-})
-
-export default connect(mapStateToProps, null)(PageHome)
+export default PageHome

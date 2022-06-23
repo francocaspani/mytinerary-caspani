@@ -27,13 +27,13 @@ const itinerariesControllers ={
         })
     },
     addItinerary: async (req,res) => {
-        const { nameItinerary,nameAndAvatar,price,time,hashtags,likes,activities,idCity } = req.body
+        const { nameItinerary,nameUserAndAvatar,price,time,hashtags,likes,activities,idCity } = req.body
         let itinerary
         let error = null
         try{
             itinerary = await new Itinerary({
                 nameItinerary:nameItinerary,
-                nameAndAvatar:nameAndAvatar,
+                nameUserAndAvatar:nameUserAndAvatar,
                 price:price,
                 time:time,
                 hashtags:hashtags,

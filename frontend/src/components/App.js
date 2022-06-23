@@ -10,15 +10,19 @@ import NotFoundPage from '../pages/NotFoundPage';
 import PageCities from '../pages/PageCities';
 import ScrollToTop from "react-scroll-to-top";
 import PageDetails from '../pages/PageDetails';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
 
 
-function App(props) {
+function App() {
+
+  const dispatch = useDispatch()
 
   useEffect(()=>{
-    props.getCities()
+    dispatch(citiesActions.getCities())
+    dispatch(itinerariesActions.getItineraries())
     // eslint-disable-next-line
   },[])
 
@@ -50,8 +54,5 @@ function App(props) {
   );
 }
 
-const mapDispatchToProps = {
-  getCities : citiesActions.getCities
-}
 
-export default connect(null, mapDispatchToProps) (App);
+export default App;

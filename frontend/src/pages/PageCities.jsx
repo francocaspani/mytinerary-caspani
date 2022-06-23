@@ -25,21 +25,10 @@ function PageCities(props) {
   const executeScroll = () => window.scrollTo({ behavior: 'smooth', top: myRef.current.offsetTop })
 
   const [textFilter, setTextFilter] = useState('')
-  // const [cities, setCities] = useState([])
 
   const handleTextSearch = (event) => {
     setTextFilter(event.target.value)
   }
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/api/cities')
-  //     .then(response => {
-  //       let citiesToDisplay = response.data.response.cities.filter(cities => cities.name.toLowerCase().startsWith(textFilter.trim().toLowerCase()))
-  //       setCities(citiesToDisplay)
-  //     }
-  //     )
-  // }, [textFilter])
-
   useEffect(()=>{
     props.filterCities(textFilter)
     // eslint-disable-next-line
@@ -49,8 +38,8 @@ function PageCities(props) {
   return (
     <div className="main-wrapper">
       <h1 className="main-title">Which city would you like to visit?</h1>
-      <button className='button-scroll' onClick={executeScroll} ><h1 className="title-scroll">Explore them all!<ArrowCircleDownIcon
-        fontSize='large' /></h1></button>
+      <button className='custom-btn btn-12' onClick={executeScroll} ><span><h1>Explore them all!</h1></span><span><ArrowCircleDownIcon
+        fontSize='large' /></span></button>
       <div className='container-input'><TextField
         onKeyUp={handleTextSearch}
         sx={{ mx: 1 }} id="search-cities" label="Search" variant="standard" /></div>

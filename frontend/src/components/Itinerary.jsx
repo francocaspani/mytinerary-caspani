@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 import "../stylesheets/itinerary.css"
 
@@ -47,7 +48,7 @@ const ListItem = ({ index, onClick, data }) => {
                   shouldFlip={shouldFlip(index)}
                   delayUntil={createCardFlipId(index)}
                 >
-                  <p>Posted by: {data.nameUserAndAvatar[0]}</p>
+                  <p className="userName">Posted by: {data.nameUserAndAvatar[0]}</p>
                 </Flipped>
                 <Flipped
                   flipId={`description-${data._id}-2`}
@@ -55,9 +56,9 @@ const ListItem = ({ index, onClick, data }) => {
                   shouldFlip={shouldFlip(index)}
                   delayUntil={createCardFlipId(index)}
                 >
-                  <div className="infoExtra">{price.length > 0 ? price.map(e=>{
-                    return (<img className="dollar" src={process.env.PUBLIC_URL+`/assets/img/dollar.svg`} alt="" />
-                  )}) : <p>For free</p> } <p>Duration: {data.time}hs</p></div>
+                  <div className="infoExtra"><div>{price.length > 0 ? price.map(e=>{
+                    return (<img key={e} className="dollar" src={process.env.PUBLIC_URL+`/assets/img/dollar.svg`} alt="" />
+                  )}) : <p>For free</p> }</div> <p className="likes">{data.time}Hs<AccessTimeFilledIcon/></p></div>
                 </Flipped>
                 <Flipped
                   flipId={`description-${data._id}-3`}
@@ -67,7 +68,7 @@ const ListItem = ({ index, onClick, data }) => {
                 >
                   <div className="infoExtra2">
                     <div className="hashtags">{data.hashtags.map(e=>{
-                    return ( <p>#{e}</p>
+                    return ( <p key={e}>#{e}</p>
                   )})}</div> <div className="likes">{data.likes}<FavoriteIcon/></div> </div>
                 </Flipped>
             </div>
@@ -113,7 +114,7 @@ const ExpandedListItem = ({ index, onClick, data }) => {
                   stagger="card-content"
                   delayUntil={createCardFlipId(index)}
                 >
-                  <p>Posted by: {data.nameUserAndAvatar[0]}</p>
+                  <p className="userName">Posted by: {data.nameUserAndAvatar[0]}</p>
                 </Flipped>
                 <Flipped
                   flipId={`description-${data._id}-2`}
@@ -121,8 +122,8 @@ const ExpandedListItem = ({ index, onClick, data }) => {
                   delayUntil={createCardFlipId(index)}
                 >
                   <div className="infoExtra">{price.length > 0 ? price.map(e=>{
-                    return (<img className="dollar" src={process.env.PUBLIC_URL+`/assets/img/dollar.svg`} alt="" />
-                  )}) : <p>For free</p> } <p>Duration: {data.time}hs</p></div>
+                    return (<img key={e} className="dollar" src={process.env.PUBLIC_URL+`/assets/img/dollar.svg`} alt="" />
+                  )}) : <p>For free</p> } <p className="likes">{data.time}Hs<AccessTimeFilledIcon/></p></div>
                 </Flipped>
                 <Flipped
                   flipId={`description-${data._id}-3`}
@@ -131,12 +132,14 @@ const ExpandedListItem = ({ index, onClick, data }) => {
                 >
                   <div className="infoExtra2">
                     <div className="hashtags">{data.hashtags.map(e=>{
-                    return ( <p>#{e}</p>
+                    return ( <p key={e}>#{e}</p>
                   )})}</div> <div className="likes">{data.likes}<FavoriteIcon/></div> </div>
                 </Flipped>
             </div>
             <div className="additional-content">
-              <div></div>
+              <div />
+              <div />
+              <div />
             </div>
           </div>
         </Flipped>
@@ -145,7 +148,7 @@ const ExpandedListItem = ({ index, onClick, data }) => {
   );
 };
 
-function AnimatedList() {
+function Itinerary() {
   const [focused, setFocused] = useState(null)
   const itinerariesByCity = useSelector(store => store.itinerariesReducer.itinerariesByCity)
   
@@ -189,5 +192,5 @@ function AnimatedList() {
 }
 
 
-export default AnimatedList
+export default Itinerary
 

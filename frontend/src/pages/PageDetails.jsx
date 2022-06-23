@@ -4,7 +4,8 @@ import '../stylesheets/details.css';
 import citiesActions from '../redux/actions/citiesActions';
 import { useDispatch, useSelector } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesActions";
-import AnimatedList from "../components/Itinerary";
+import Itinerary from "../components/Itinerary";
+import NonItinerary from "../components/NonItinerary";
 
 
 
@@ -21,7 +22,6 @@ function PageDetails() {
         // eslint-disable-next-line
     }, [id])
     const itinerariesByCity =useSelector(store => store.itinerariesReducer.itinerariesByCity)
-    console.log(itinerariesByCity)
     const city = useSelector(store => store.citiesReducer.city)
 
     function handleNavigate() {
@@ -38,7 +38,7 @@ function PageDetails() {
                         <div className="text-details">
                             <h1 className="title-details">{city.name}</h1>
                             <h3>{city.country}</h3>
-                            <AnimatedList />
+                            {itinerariesByCity.length > 0 ? <Itinerary /> : <NonItinerary city= {city.name}/>}
                         </div>
                     </div>
                 </>}

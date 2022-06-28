@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import '../stylesheets/header.css'
 import { Link as LinkRouter } from "react-router-dom"
 
-const settings = [{ name: 'Profile', path: '/underConstruction' }, { name: 'Account', path: '/underConstruction' }, { name: 'Logout', path: '/underConstruction' }];
+const settings = [{ name: 'Sign Up', path: '/signup' }, { name: 'Log In', path: '/login' }, { name: 'Logout', path: '/underConstruction' }];
 
 const Header = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

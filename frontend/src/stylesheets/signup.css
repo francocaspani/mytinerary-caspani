@@ -1,0 +1,11 @@
+.sign-up{
+    display: flex;
+    flex-direction: row;
+}
+.hero-signup{
+    width: 60%;
+    height: 60vh;
+    justify-content: center;
+    align-content: center;
+    color: white;
+}

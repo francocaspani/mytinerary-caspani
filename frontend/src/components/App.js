@@ -13,6 +13,7 @@ import PageDetails from '../pages/PageDetails';
 import { useDispatch } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import PageSignUpLogIn from '../pages/PageSignUpLogIn';
 
 
 
@@ -40,6 +41,8 @@ function App() {
           <Route path='/*' element={<NotFoundPage />} />
           <Route path='/cities' element={<PageCities />} />
           <Route path='/cities/:id' element={<PageDetails />} />
+          <Route path='/signup' element={<PageSignUpLogIn logIn={false}/>} />
+          <Route path='/login' element={<PageSignUpLogIn logIn={true}/>} />
         </Routes>
         <Footer pages={pages} />
         <ScrollToTop

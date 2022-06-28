@@ -27,4 +27,13 @@ Router.route('/itineraries/:id')
 Router.route('/itinerariesByCity/:id')
 .get(readItineraries)
 
+const usersControllers = require('../controllers/usersControllers');
+const {signUpUser, logInUser} = usersControllers
+
+Router.route('/auth/signup')
+.post(signUpUser)
+
+Router.route('/auth/login')
+.post(logInUser)
+
 module.exports = Router

@@ -13,10 +13,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import '../stylesheets/header.css'
 import { Link as LinkRouter } from "react-router-dom"
+import { useSelector } from "react-redux";
 
-const settings = [{ name: 'Sign Up', path: '/signup' }, { name: 'Log In', path: '/login' }, { name: 'Logout', path: '/underConstruction' }];
+
 
 const Header = (props) => {
+  const userData = useSelector(store => store.usersReducer.userData)
+  const settings = userData.length > 0 ? [{ name: 'Log Out', path: '/logout' }] : [{ name: 'Sign Up', path: '/signup' }, { name: 'Log In', path: '/login' }]
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

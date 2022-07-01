@@ -14,6 +14,8 @@ import { useDispatch } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import PageSignUpLogIn from '../pages/PageSignUpLogIn';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -34,6 +36,7 @@ function App() {
         <video src={bgvideo} autoPlay loop muted className='video-bg'>
         </video>
         <Header pages={pages} />
+        
         <Routes>
           <Route path='/home' element={<PageHome />} />
           <Route path='/' element={<PageHome />} />
@@ -45,6 +48,7 @@ function App() {
           <Route path='/login' element={<PageSignUpLogIn logIn={true}/>} />
         </Routes>
         <Footer pages={pages} />
+        <ToastContainer />
         <ScrollToTop
         smooth
         viewBox="0 0 48 48"

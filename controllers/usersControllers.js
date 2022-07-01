@@ -9,19 +9,19 @@ const usersControllers = {
             if (userExist) {
                 if (userExist.from.indexOf(from) !== -1) {
                     res.json({
-                        succes: false,
+                        success: false,
                         from: from,
                         message: 'You have already an account, please go to log in'
                     })
                 } else {
                     const hashPassword = bcryptjs.hashSync(password, 10)
-
                     userExist.from.push(from)
                     userExist.password.push(hashPassword)
+                    await userExist.save()
                     res.json({
-                        succes: true,
+                        success: true,
                         from: from,
-                        message: 'Now you can log in with' + from
+                        message: 'Now you can log in with ' + from
                     })
                 }
             } else {
@@ -38,14 +38,14 @@ const usersControllers = {
                 if (from !== 'propietary-signup') {
                     await newUser.save()
                     res.json({
-                        succes: true,
+                        success: true,
                         from: from,
-                        message: 'Account created succesfully, now you can log in with' + from
+                        message: 'Account created successfully, now you can log in with' + from
                     })
                 } else {
                     await newUser.save()
                     res.json({
-                        succes: true,
+                        success: true,
                         from: from,
                         message: 'We have sent to you a verification email, please check your indox to validate you account'
                     })
@@ -53,7 +53,7 @@ const usersControllers = {
             }
         } catch (err){
             res.json({
-                succes: false,
+                success: false,
                 message:'Something went wrong, please try again.'
             })
         }
@@ -65,7 +65,7 @@ const usersControllers = {
             const userExist = await User.findOne({ email })
             if (!userExist) {
                 res.json({
-                    succes: false,
+                    success: false,
                     message: 'There is not account with that email, please Sign Up first'
                 })
             } else {
@@ -80,14 +80,14 @@ const usersControllers = {
                             from: from
                         }
                         res.json({
-                            succes: true,
+                            success: true,
                             from: from,
                             response: {userData},
                             message: 'Welcome back ' + userData.firstName
                         })
                     } else {
                         res.json({
-                            succes: false,
+                            success: false,
                             from: from,
                             message: 'There is no account connected with that '+from+' account, please Sign Up first'
                         })
@@ -104,14 +104,14 @@ const usersControllers = {
                             from: from
                         }
                         res.json({
-                            succes: true,
+                            success: true,
                             from: from,
                             response: {userData},
                             message: 'Welcome back ' + userData.firstName
                         })
                     } else {
                         res.json({
-                            succes: false,
+                            success: false,
                             from: from,
                             message: 'Your email or password are incorrect.'
                         })
@@ -121,11 +121,23 @@ const usersControllers = {
         } catch(error){
             console.log(error)
             res.json({
-                succes: false,
+                success: false,
                 message: 'Something went wrong, please try again.'
                 
             })
         }
+    },
+    getUsers: async (req,res) => {
+        let users
+        let error = null
+        try {
+            users = await User.find()
+        } catch (err) {error = err}
+        res.json({
+            response: error ? 'ERROR' : { users },
+            success: error ? false : true,
+            error: error
+        })
     }
 }
 

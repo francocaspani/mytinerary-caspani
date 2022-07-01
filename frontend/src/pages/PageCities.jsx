@@ -33,7 +33,6 @@ function PageCities(props) {
     props.filterCities(textFilter)
     // eslint-disable-next-line
   },[textFilter])
-  console.log(props.citiesFiltered)
 
   return (
     <div className="main-wrapper">

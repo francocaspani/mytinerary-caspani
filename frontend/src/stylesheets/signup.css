@@ -1,11 +1,187 @@
-.sign-up{
+.sign-up {
     display: flex;
     flex-direction: row;
+    margin-top: 3rem;
+    flex-grow: 1;
+    margin-bottom: 3rem;
 }
-.hero-signup{
+
+.hero-signup {
+    display: flex;
     width: 60%;
-    height: 60vh;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     color: white;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.832);
+    flex-grow: 1;
+}
+
+.logo-signup {
+    height: 100px;
+}
+
+.title-logo {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.extern-signup {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+.signup-icons{
+    display: flex;
+    gap: 1rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+}
+
+.name-signup {
+    display: flex;
+    gap: .5rem;
+}
+
+form input {
+    background-color: #212121;
+    max-width: 9rem;
+    height: 30px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid rgb(149, 149, 149);
+    border-radius: 1rem;
+    box-shadow: 3px 3px 2px rgb(112, 112, 112);
+    color: white;
+}
+
+form input:focus {
+    color: rgb(255, 255, 255);
+    background-color: #212121;
+    outline-color: rgb(255, 255, 255);
+    box-shadow: -3px -3px 15px rgb(131, 131, 131);
+    transition: .1s;
+    transition-property: box-shadow;
+}
+
+form select {
+    background-color: #212121;
+    max-width: 190px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid rgb(149, 149, 149);
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 3px 3px 2px rgb(112, 112, 112);
+}
+
+form select:focus {
+    color: rgb(255, 255, 255);
+    background-color: #212121;
+    outline-color: rgb(255, 255, 255);
+    box-shadow: -3px -3px 15px rgb(131, 131, 131);
+    transition: .1s;
+    transition-property: box-shadow;
+}
+
+form button {
+    font-size: 1.3rem;
+    width: 10rem;
+    height: 3rem;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem 1rem .5rem 1rem;
+    border: none;
+    background: #fff;
+    transition: all 0.1s linear;
+    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
+
+form button:active {
+    transform: scale(0.95);
+}
+
+form button span {
+    color: #464646;
+}
+
+button .border {
+    position: absolute;
+    border: 0.15em solid #fff;
+    transition: all 0.3s 0.08s linear;
+    top: 50%;
+    left: 50%;
+    width: 10rem;
+    height: 3rem;
+    transform: translate(-50%, -50%);
+}
+
+button:hover .border {
+    display: block;
+    width: 10.5rem;
+    height: 3.5rem;
+}
+
+.full-rounded {
+    border-radius: 2em;
+}
+
+@media screen and (max-width:768px) {
+    .sign-up {
+        flex-direction: column;
+    }
+    .hero-signup {
+        height: 200px;
+        width: 100%;
+        text-align: center;
+    }
+}
+.google-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.swal2-html-container{
+    height: 6rem;
+}
+.select-modal{
+    background-color: #212121;
+    max-width: 190px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid rgb(149, 149, 149);
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 3px 3px 2px rgb(112, 112, 112);
 }

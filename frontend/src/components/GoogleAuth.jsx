@@ -36,32 +36,9 @@ export default function GoogleAuth({country}){
         })
     }
 
-    if (!country) {
-        async function handleCallbackResponse(response){
-            let userObject = jwt_decode(response.credential);
-            const loggedUser = {
-                email: userObject.email,
-                password: `Aa${userObject.sub}`,
-                from: 'google'
-            }
-            const res = await dispatch(usersActions.logInUser(loggedUser))
-            
-            Swal.fire({
-                title: res.data.message,
-                width: 600,
-                padding: '3em',
-                color: '#ffff',
-                confirmButtonColor: '#212121',
-                background: '#0000',
-                backdrop: `rgba(0,0,0,0.8)`,
-                didClose: () => {
-                    dispatch({type: 'modal', payload: !showModal})
-                }
-            })
-        }
-    } 
     useEffect(()=>{
         /* global google */
+
         google.accounts.id.initialize({
             client_id: '92984163218-c5acji72l93famcjqe92r44monjm446s.apps.googleusercontent.com',
             callback: handleCallbackResponse
@@ -71,6 +48,7 @@ export default function GoogleAuth({country}){
             document.getElementById('buttonDiv'),
             {theme: 'outline', size: 'large'}
         )
+
     },[])
 
     return(

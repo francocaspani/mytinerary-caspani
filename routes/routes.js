@@ -29,7 +29,7 @@ Router.route('/itinerariesByCity/:id')
 .get(readItineraries)
 
 const usersControllers = require('../controllers/usersControllers');
-const {signUpUser, logInUser, getUsers} = usersControllers
+const {signUpUser, logInUser, getUsers, verifyEmail} = usersControllers
 
 Router.route('/auth/signup')
 .post(validator,signUpUser)
@@ -39,5 +39,8 @@ Router.route('/auth/login')
 
 Router.route('/auth/users')
 .get(getUsers)
+
+Router.route('/verify/:uniqueString')
+.get(verifyEmail)
 
 module.exports = Router

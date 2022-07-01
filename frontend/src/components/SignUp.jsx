@@ -4,8 +4,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { useDispatch, useSelector } from "react-redux";
 import '../stylesheets/signup.css';
 import usersActions from "../redux/actions/usersActions";
-import Swal from 'sweetalert2'
-import { toast } from 'react-toastify'
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import GoogleAuth from './GoogleAuth';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -18,10 +18,7 @@ export default function SignUp() {
     const [swalProps, setSwalProps] = useState({});
     const [selectedCountry, setSelectedCountry] = useState()
 
-
     const dispatch = useDispatch()
-    const message = useSelector(store => store.usersReducer.message)
-    const success = useSelector(store => store.usersReducer.success)
     const showModal = useSelector(store => store.usersReducer.showModal)
 
     useEffect(() => {
@@ -31,11 +28,11 @@ export default function SignUp() {
 
     const countriesSorted = countries?.map(country => country.name.common).sort()
 
-    useEffect(()=>{
+    useEffect(() => {
         setSwalProps({
             show: false
         })
-    },[showModal])
+    }, [showModal])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -51,19 +48,20 @@ export default function SignUp() {
         const res = await dispatch(usersActions.signUpUser(userData))
 
         if (res.data.from === 'validator') {
-            res.data.message.map(message => toast(message.message))
+            res.data.message.map((message, index) => toast.error(message.message, {
+                theme: "dark",
+                position: "bottom-right",
+                autoClose: 6000,
+                delay: Number(`${index}000`)
+            }))
         } else {
-
             Swal.fire({
                 title: res.data.message,
                 width: 600,
                 padding: '3em',
                 color: '#ffff',
                 confirmButtonColor: '#212121',
-                background: '#0000',
-                backdrop: `
-          rgba(0,0,0,0.8)
-        `
+                background: '#0000'
             })
         }
     }
@@ -106,7 +104,6 @@ export default function SignUp() {
                         </SweetAlert2>
                     </span>
                     <span><TwitterIcon /></span></div>
-
             </div>
             <div className='form'>
                 <p>or create an account</p>
@@ -135,11 +132,10 @@ export default function SignUp() {
                     </span>
                     <button className='full-rounded' type="submit">
                         <span>Sign Up</span>
-                        <div className="border full-rounded"></div></button>
-
+                        <div className="border full-rounded"></div>
+                    </button>
                 </form>
             </div>
-
         </>
     )
 }

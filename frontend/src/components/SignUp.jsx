@@ -50,8 +50,8 @@ export default function SignUp() {
         if (res.data.from === 'validator') {
             res.data.message.map((message, index) => toast.error(message.message, {
                 theme: "dark",
-                position: "bottom-right",
-                autoClose: 6000,
+                position: "bottom-left",
+                autoClose: 7000,
                 delay: Number(`${index}000`)
             }))
         } else {

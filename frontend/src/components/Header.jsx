@@ -13,13 +13,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import '../stylesheets/header.css'
 import { Link as LinkRouter } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import usersActions from '../redux/actions/usersActions';
 
 
 
 const Header = (props) => {
   const userData = useSelector(store => store.usersReducer.userData)
-  const settings = userData.length > 0 ? [{ name: 'Log Out', path: '/logout' }] : [{ name: 'Sign Up', path: '/signup' }, { name: 'Log In', path: '/login' }]
+  const dispatch = useDispatch()
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -39,6 +40,9 @@ const Header = (props) => {
     setAnchorElUser(null);
   };
 
+  const handleLogOut = ()=> {
+    dispatch(usersActions.logOutUser())
+  }
   return (
     <AppBar className='header' position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none' }}>
       <Container maxWidth="xl" >
@@ -117,7 +121,8 @@ const Header = (props) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="/broken-image.jpg" />
+                {userData ? <Avatar alt="" src={userData.avatar} /> : <Avatar alt="" src="/broken-image.jpg" />}
+
               </IconButton>
             </Tooltip>
             <Menu
@@ -135,13 +140,25 @@ const Header = (props) => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting, index) => (
-                <LinkRouter key={index} className='link' to={setting.path}><MenuItem onClick={handleCloseUserMenu}>
-                  <Typography sx={{ color: 'black' }} textAlign="center">{setting.name}</Typography>
+            > {userData ?
+              <div>
+              <LinkRouter className='link' to='/' onClick={handleLogOut}><MenuItem onClick={handleCloseUserMenu}>
+                <Typography sx={{ color: 'black' }} textAlign="center">Log Out</Typography>
+              </MenuItem></LinkRouter>
+              <LinkRouter className='link' to='/'><MenuItem onClick={handleCloseUserMenu}>
+              <Typography sx={{ color: 'black' }} textAlign="center">{userData.firstName}</Typography>
+            </MenuItem></LinkRouter>
+            </div>
+              :
+              <div>
+                <LinkRouter className='link' to='/signup'><MenuItem onClick={handleCloseUserMenu}>
+                  <Typography sx={{ color: 'black' }} textAlign="center">Sign Up</Typography>
                 </MenuItem></LinkRouter>
-
-              ))}
+                <LinkRouter className='link' to='/login'><MenuItem onClick={handleCloseUserMenu}>
+                  <Typography sx={{ color: 'black' }} textAlign="center">Log in</Typography>
+                </MenuItem></LinkRouter>
+              </div>
+              }
             </Menu>
           </Box>
         </Toolbar>

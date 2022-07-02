@@ -28,7 +28,7 @@ const usersControllers = {
                     res.json({
                         success: true,
                         from: from,
-                        message: 'Now you can log in with your ' + from
+                        message: `Now you can log in with your ${from === 'propietary-signup'? 'email' : from}`
                     })
                 }
             } else {
@@ -50,7 +50,7 @@ const usersControllers = {
                     res.json({
                         success: true,
                         from: from,
-                        message: 'Account created successfully, now you can log in with' + from
+                        message: 'Account created successfully, now you can log in with your ' + from
                     })
                 } else {
                     await newUser.save()
@@ -89,12 +89,14 @@ const usersControllers = {
                             firstName: userExist.firstName,
                             lastName: userExist.lastName,
                             email: userExist.email,
+                            avatar: userExist.avatar,
                             from: from
                         }
+                        const token = jwt.sign({...userData}, process.env.SECRET_KEY)
                         res.json({
                             success: true,
                             from: from,
-                            response: { userData },
+                            response: {token, userData },
                             message: 'Welcome back ' + userData.firstName
                         })
                     } else {
@@ -114,13 +116,14 @@ const usersControllers = {
                                 firstName: userExist.firstName,
                                 lastName: userExist.lastName,
                                 email: userExist.email,
+                                avatar: userExist.avatar,
                                 from: from
                             }
-                            
+                            const token = jwt.sign({...userData}, process.env.SECRET_KEY)
                             res.json({
                                 success: true,
                                 from: from,
-                                response: { userData },
+                                response: {token, userData },
                                 message: 'Welcome back ' + userData.firstName
                             })
                         } else {
@@ -173,6 +176,20 @@ const usersControllers = {
             res.json({
                 success: false,
                 message: `Your email has not been confirmed yet!`
+            })
+        }
+    },
+    verifyToken: (req,res) => {
+        if (req.user){
+            res.json({
+                success: true,
+                response:{userData:{id: req.user.id, 
+                        firstName: req.user.firstName, 
+                        lastName: req.user.lastName,
+                        email: req.user.email,
+                        avatar: req.user.avatar,
+                        from:'token'}},
+                message:'Welcome back '+ req.user.firstName
             })
         }
     }

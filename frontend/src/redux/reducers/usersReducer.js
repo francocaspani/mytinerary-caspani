@@ -1,7 +1,7 @@
 const initialState = {
     message: '',
     success: Boolean,
-    userData: [],
+    userData: null,
     showModal: false
 }
 
@@ -14,9 +14,9 @@ const usersReducer = (state = initialState, action) => {
                 success: action.payload.succes
             }
         case 'logInUser':
-            let user = []
+            let user 
             if (action.payload.success){
-                user = [action.payload.response.userData]
+                user = action.payload.response.userData
             }
             return {
                 ...state,
@@ -28,6 +28,11 @@ const usersReducer = (state = initialState, action) => {
             return{
                 ...state,
                 showModal: action.payload
+            }
+        case 'logOutUser':
+            return{
+                ...state,
+                userData: action.payload
             }
         default:
             return state

@@ -3,10 +3,11 @@ import '../stylesheets/signup.css';
 import usersActions from "../redux/actions/usersActions";
 import Swal from 'sweetalert2'
 import GoogleLogIn from './GoogleLogIn';
+import { useNavigate } from "react-router-dom";
 
 const Toast = Swal.mixin({
     toast: true,
-    position: 'bottom-end',
+    position: 'bottom-start',
     showConfirmButton: false,
     background: '#000000',
     color: '#ffff',
@@ -21,6 +22,7 @@ const Toast = Swal.mixin({
 function LogIn() {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const HandleSubmit = async (event) => {
         event.preventDefault()
@@ -36,6 +38,11 @@ function LogIn() {
             icon: res.data.success ? 'success' : 'error',
             title: res.data.message
         })
+
+        if (res.data.success) {
+            navigate('/')
+        }
+
 
     }
 

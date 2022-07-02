@@ -16,6 +16,7 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import PageSignUpLogIn from '../pages/PageSignUpLogIn';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import usersActions from '../redux/actions/usersActions';
 
 
 
@@ -26,6 +27,11 @@ function App() {
   useEffect(()=>{
     dispatch(citiesActions.getCities())
     dispatch(itinerariesActions.getItineraries())
+
+    if(localStorage.getItem('token') !== null){
+      const token = localStorage.getItem('token')
+      dispatch(usersActions.verifyToken(token))
+    }
     // eslint-disable-next-line
   },[])
 

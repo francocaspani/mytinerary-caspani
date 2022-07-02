@@ -18,7 +18,7 @@ export default function GoogleAuth({country}){
             password: `Aa${userObject.sub}`,
             avatar: userObject.picture,
             country: country,
-            from: 'google'
+            from: 'Google Account'
         }
         const res = await dispatch(usersActions.signUpUser(userData))
         
@@ -38,7 +38,6 @@ export default function GoogleAuth({country}){
 
     useEffect(()=>{
         /* global google */
-
         google.accounts.id.initialize({
             client_id: '92984163218-c5acji72l93famcjqe92r44monjm446s.apps.googleusercontent.com',
             callback: handleCallbackResponse
@@ -48,7 +47,6 @@ export default function GoogleAuth({country}){
             document.getElementById('buttonDiv'),
             {theme: 'outline', size: 'large'}
         )
-
     },[])
 
     return(

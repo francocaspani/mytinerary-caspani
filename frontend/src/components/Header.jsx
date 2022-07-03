@@ -15,8 +15,21 @@ import '../stylesheets/header.css'
 import { Link as LinkRouter } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import usersActions from '../redux/actions/usersActions';
+import Swal from 'sweetalert2'
 
-
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom-start',
+  showConfirmButton: false,
+  background: '#000000',
+  color: '#ffff',
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
 const Header = (props) => {
   const userData = useSelector(store => store.usersReducer.userData)
@@ -42,6 +55,11 @@ const Header = (props) => {
 
   const handleLogOut = ()=> {
     dispatch(usersActions.logOutUser())
+    Toast.fire({
+      icon: 'success',
+      title: 'Logged out successfully'
+  })
+
   }
   return (
     <AppBar className='header' position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none' }}>

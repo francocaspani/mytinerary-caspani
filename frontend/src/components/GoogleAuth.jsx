@@ -28,7 +28,7 @@ export default function GoogleAuth({country}){
             padding: '3em',
             color: '#ffff',
             confirmButtonColor: '#212121',
-            background: '#0000',
+            background: '#000000',
             backdrop: `rgba(0,0,0,0.8)`,
             didClose: () => {
                 dispatch({type: 'modal', payload: !showModal})

@@ -11,12 +11,16 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import SweetAlert2 from 'react-sweetalert2';
+import InfoIcon from '@mui/icons-material/Info';
+import Popover from '@mui/material/Popover';
+import TwitterLogin from "react-twitter-login";
 
 
 export default function SignUp() {
     const [countries, setCountries] = useState()
     const [swalProps, setSwalProps] = useState({});
     const [selectedCountry, setSelectedCountry] = useState()
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const dispatch = useDispatch()
     const showModal = useSelector(store => store.usersReducer.showModal)
@@ -61,7 +65,7 @@ export default function SignUp() {
                 padding: '3em',
                 color: '#ffff',
                 confirmButtonColor: '#212121',
-                background: '#0000'
+                background: '#000000'
             })
         }
     }
@@ -81,6 +85,21 @@ export default function SignUp() {
         setSelectedCountry(event.target.value)
     }
 
+    const handlePopoverOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handlePopoverClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+
+    const authHandler = (err, data) => {
+        console.log(err, data);
+    };
+    const CONSUMER_KEY = 'Od9oFefB3FTlubzmSqfyAZzQM'
+    const CONSUMER_SECRET = 'SMdN7HSaSCICJWU7VzffHLuPE0u7C2Jz1DUEG7jIPbjurV8OEH'
     return (
         <>
             <div className="extern-signup">
@@ -103,30 +122,58 @@ export default function SignUp() {
                             </div>
                         </SweetAlert2>
                     </span>
-                    <span><TwitterIcon /></span></div>
+                    <span><TwitterIcon />
+                        <TwitterLogin
+                            authCallback={authHandler}
+                            consumerKey={CONSUMER_KEY}
+                            consumerSecret={CONSUMER_SECRET}
+                        />
+                    </span></div>
             </div>
             <div className='form'>
                 <p>or create an account</p>
                 <form onSubmit={handleSubmit}>
-                    <div className='name-signup'>
-                        <span className='input'>
-                            <input type="text" name="name" placeholder="First Name*" required />
-                        </span>
-                        <span className='input'>
-                            <input type="text" name="lastName" placeholder="Last Name" />
-                        </span>
-                    </div>
+                    <span className='input'>
+                        <input type="text" name="name" placeholder="First Name*" required />
+                    </span>
+                    <span className='input'>
+                        <input type="text" name="lastName" placeholder="Last Name" />
+                    </span>
                     <span className='input'>
                         <input type="email" name="email" id="email" placeholder="Email*" required />
                     </span>
                     <span className='input'>
                         <input type="password" name="password" id="password" placeholder="Password*" required />
+                        <InfoIcon
+                            onMouseEnter={handlePopoverOpen}
+                            onMouseLeave={handlePopoverClose}
+                            className='info-password' sx={{ fontSize: 'large' }} />
+                        <Popover
+                            id="mouse-over-popover"
+                            sx={{
+                                pointerEvents: 'none',
+                            }}
+                            open={open}
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            onClose={handlePopoverClose}
+                            disableRestoreFocus
+                        >
+                            <p className='info-password-text'>Password must include an uppercase,<br /> a lowercase, and a number.</p>
+                        </Popover>
                     </span>
                     <span className='input'>
                         <input type="text" name="avatar" id="avatar" placeholder="Profile Pic URL*" required />
                     </span>
                     <span className='input'>
-                        <select name="country" id="country">
+                        <select name="country" id="country" placeholder='Country'>
                             {countriesSorted?.map((everycountry, index) => <option key={index} value={everycountry}>{everycountry}</option>)}
                         </select>
                     </span>

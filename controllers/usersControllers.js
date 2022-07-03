@@ -191,6 +191,11 @@ const usersControllers = {
                         from:'token'}},
                 message:'Welcome back '+ req.user.firstName
             })
+        }else {
+            res.json({
+                success:false,
+                message: 'Please log in again'
+            })
         }
     }
 }

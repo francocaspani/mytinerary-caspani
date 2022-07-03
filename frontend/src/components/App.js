@@ -10,52 +10,78 @@ import NotFoundPage from '../pages/NotFoundPage';
 import PageCities from '../pages/PageCities';
 import ScrollToTop from "react-scroll-to-top";
 import PageDetails from '../pages/PageDetails';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import PageSignUpLogIn from '../pages/PageSignUpLogIn';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import usersActions from '../redux/actions/usersActions';
+import Swal from 'sweetalert2'
 
-
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom-start',
+  showConfirmButton: false,
+  background: '#000000',
+  color: '#ffff',
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
 function App() {
 
   const dispatch = useDispatch()
+  const userData = useSelector(store => store.usersReducer.userData)
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(citiesActions.getCities())
     dispatch(itinerariesActions.getItineraries())
 
-    if(localStorage.getItem('token') !== null){
+    if (localStorage.getItem('token') !== null) {
       const token = localStorage.getItem('token')
-      dispatch(usersActions.verifyToken(token))
+
+      const verifyToken = async () => {
+        const res = await dispatch(usersActions.verifyToken(token))
+        console.log(res)
+        if (res) {
+          
+          Toast.fire({
+            icon: res.data.success ? 'success' : 'error',
+            title: res.data.message
+          })
+        }
+      }
+      verifyToken()
     }
     // eslint-disable-next-line
-  },[])
+  }, [])
 
   const pages = [{ name: 'Home', path: '/' }, { name: 'Cities', path: '/cities' }]
 
   return (
     <div className="App">
-        <video src={bgvideo} autoPlay loop muted className='video-bg'>
-        </video>
-        <Header pages={pages} />
-        
-        <Routes>
-          <Route path='/home' element={<PageHome />} />
-          <Route path='/' element={<PageHome />} />
-          <Route path='/underConstruction' element={<PageUnderConstruction />} />
-          <Route path='/*' element={<NotFoundPage />} />
-          <Route path='/cities' element={<PageCities />} />
-          <Route path='/cities/:id' element={<PageDetails />} />
-          <Route path='/signup' element={<PageSignUpLogIn logIn={false}/>} />
-          <Route path='/login' element={<PageSignUpLogIn logIn={true}/>} />
-        </Routes>
-        <Footer pages={pages} />
-        <ToastContainer />
-        <ScrollToTop
+      <video src={bgvideo} autoPlay loop muted className='video-bg'>
+      </video>
+      <Header pages={pages} />
+
+      <Routes>
+        <Route path='/home' element={<PageHome />} />
+        <Route path='/' element={<PageHome />} />
+        <Route path='/underConstruction' element={<PageUnderConstruction />} />
+        <Route path='/*' element={<PageHome />} />
+        <Route path='/cities' element={<PageCities />} />
+        <Route path='/cities/:id' element={<PageDetails />} />
+        {!userData && <Route path='/signup' element={<PageSignUpLogIn logIn={false} />} />}
+        {!userData && <Route path='/login' element={<PageSignUpLogIn logIn={true} />} />}
+      </Routes>
+      <Footer pages={pages} />
+      <ToastContainer />
+      <ScrollToTop
         smooth
         viewBox="0 0 48 48"
         width='60'

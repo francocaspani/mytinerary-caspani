@@ -1,8 +1,11 @@
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
+const handlebars = require('handlebars')
+const path = require('path')
+const fs = require('fs');
 
-const sendEmail = async (email, uniqueString) => {
+const sendEmail = async (email, uniqueString, firstName) => {
 
     const myOAuth2Client = new OAuth2(
         process.env.GOOGLE_CLIENTID,
@@ -29,13 +32,20 @@ const sendEmail = async (email, uniqueString) => {
         }
     })
 
+    const filePath = path.join(__dirname, '../email/verificationMail.html');
+    const source = fs.readFileSync(filePath, 'utf-8').toString();
+    const template = handlebars.compile(source);
+    const replacements = {
+        username: firstName,
+        uniqueString: uniqueString
+    }
+    const htmlToSend = template(replacements)
+
     let mailOptions = {
         from: 'francocaspani.dev@gmail.com',
         to: email,
-        subject: 'Account verification',
-        html: `
-        <a href=http://localhost:4000/api/verify/${uniqueString}>CLICK!</a>
-        <h3> to confiirm! </h3>`
+        subject: `Hello ${firstName}!`,
+        html: htmlToSend
     }
 
     await transporter.sendMail(mailOptions, function(error, response){

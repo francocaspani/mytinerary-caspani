@@ -6,7 +6,6 @@ import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
 import PageHome from '../pages/PageHome';
 import PageUnderConstruction from '../pages/PageUnderConstruction';
-import NotFoundPage from '../pages/NotFoundPage';
 import PageCities from '../pages/PageCities';
 import ScrollToTop from "react-scroll-to-top";
 import PageDetails from '../pages/PageDetails';
@@ -14,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import PageSignUpLogIn from '../pages/PageSignUpLogIn';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import usersActions from '../redux/actions/usersActions';
 import Swal from 'sweetalert2'
@@ -72,6 +71,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<PageHome />} />
         <Route path='/' element={<PageHome />} />
+        <Route path='/verification' element={<PageHome verification={true}/>} />
         <Route path='/underConstruction' element={<PageUnderConstruction />} />
         <Route path='/*' element={<PageHome />} />
         <Route path='/cities' element={<PageCities />} />

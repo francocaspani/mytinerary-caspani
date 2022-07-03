@@ -3,10 +3,11 @@ import jwt_decode from 'jwt-decode'
 import { useDispatch, useSelector } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 export default function GoogleAuth({country}){
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const showModal = useSelector(store => store.usersReducer.showModal)
 
     async function handleCallbackResponse(response){
@@ -32,6 +33,10 @@ export default function GoogleAuth({country}){
             backdrop: `rgba(0,0,0,0.8)`,
             didClose: () => {
                 dispatch({type: 'modal', payload: !showModal})
+                if (res.data.success){
+                    navigate('/login')
+                }
+                
             }
         })
     }
@@ -47,6 +52,7 @@ export default function GoogleAuth({country}){
             document.getElementById('buttonDiv'),
             {theme: 'outline', size: 'large'}
         )
+        // eslint-disable-next-line
     },[])
 
     return(

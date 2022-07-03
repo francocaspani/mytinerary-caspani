@@ -13,7 +13,7 @@ import { useState } from 'react';
 import SweetAlert2 from 'react-sweetalert2';
 import InfoIcon from '@mui/icons-material/Info';
 import Popover from '@mui/material/Popover';
-import TwitterLogin from "react-twitter-login";
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUp() {
@@ -23,6 +23,7 @@ export default function SignUp() {
     const [anchorEl, setAnchorEl] = useState(null);
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const showModal = useSelector(store => store.usersReducer.showModal)
 
     useEffect(() => {
@@ -65,7 +66,12 @@ export default function SignUp() {
                 padding: '3em',
                 color: '#ffff',
                 confirmButtonColor: '#212121',
-                background: '#000000'
+                background: '#000000',
+                didClose: () => {
+                    if (res.data.succes){
+                        navigate('/login')
+                    }
+                }
             })
         }
     }
@@ -94,12 +100,6 @@ export default function SignUp() {
     };
 
     const open = Boolean(anchorEl);
-
-    const authHandler = (err, data) => {
-        console.log(err, data);
-    };
-    const CONSUMER_KEY = 'Od9oFefB3FTlubzmSqfyAZzQM'
-    const CONSUMER_SECRET = 'SMdN7HSaSCICJWU7VzffHLuPE0u7C2Jz1DUEG7jIPbjurV8OEH'
     return (
         <>
             <div className="extern-signup">
@@ -122,13 +122,7 @@ export default function SignUp() {
                             </div>
                         </SweetAlert2>
                     </span>
-                    <span><TwitterIcon />
-                        <TwitterLogin
-                            authCallback={authHandler}
-                            consumerKey={CONSUMER_KEY}
-                            consumerSecret={CONSUMER_SECRET}
-                        />
-                    </span></div>
+                    <span><TwitterIcon /></span></div>
             </div>
             <div className='form'>
                 <p>or create an account</p>

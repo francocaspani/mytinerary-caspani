@@ -15,7 +15,7 @@ const usersControllers = {
             if (userExist) {
                 if (userExist.from.indexOf(from) !== -1) {
                     res.json({
-                        success: false,
+                        success: true,
                         from: from,
                         message: 'You have already an account, please go to log in'
                     })
@@ -54,7 +54,7 @@ const usersControllers = {
                     })
                 } else {
                     await newUser.save()
-                    await sendEmail(email, uniqueString)
+                    await sendEmail(email, uniqueString, firstName)
                     res.json({
                         success: true,
                         from: from,
@@ -134,6 +134,7 @@ const usersControllers = {
                             })
                         }
                     } else {
+                        await sendEmail(userExist.email, userExist.uniqueString, userExist.firstName)
                         res.json({
                             success: false,
                             from: from,
@@ -170,7 +171,7 @@ const usersControllers = {
         if (user) {
             user.verification = true
             await user.save()
-            res.redirect('http://localhost:3000')
+            res.redirect('http://localhost:3000/verification')
         }
         else {
             res.json({

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import jwt_decode from 'jwt-decode'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 export default function GoogleLogIn() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const showModal = useSelector(store => store.usersReducer.showModal)
 
     const Toast = Swal.mixin({
         toast: true,
@@ -57,6 +56,7 @@ export default function GoogleLogIn() {
             document.getElementById('buttonDiv'),
             { theme: 'outline', size: 'large' }
         )
+        // eslint-disable-next-line
     }, [])
 
     return (

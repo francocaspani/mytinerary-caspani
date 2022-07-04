@@ -1,0 +1,47 @@
+.account-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+.hero-account{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+.avatar-account{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.avata-container{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.settings-account{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.819);
+    gap: 3rem;
+}
+.settings:hover{
+    transform: scale(1.2);
+    transition: .5s;
+    cursor: pointer;
+}
+.profile{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

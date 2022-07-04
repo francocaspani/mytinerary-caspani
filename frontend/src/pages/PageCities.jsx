@@ -7,7 +7,7 @@ import Card from '../components/Card';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import citiesActions from '../redux/actions/citiesActions';
 import { connect } from 'react-redux';
-
+import { motion } from 'framer-motion';
 
 
 
@@ -29,13 +29,16 @@ function PageCities(props) {
   const handleTextSearch = (event) => {
     setTextFilter(event.target.value)
   }
-  useEffect(()=>{
+  useEffect(() => {
     props.filterCities(textFilter)
     // eslint-disable-next-line
-  },[textFilter])
+  }, [textFilter])
 
   return (
-    <div className="main-wrapper">
+    <motion.div className="main-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <h1 className="main-title">Which city would you like to visit?</h1>
       <button className='custom-btn btn-12' onClick={executeScroll} ><span><h1>Explore them all!</h1></span><span><ArrowCircleDownIcon
         fontSize='large' /></span></button>
@@ -46,19 +49,19 @@ function PageCities(props) {
       <div className='container-cards' ref={myRef}>
         {props.citiesFiltered.length > 0 ? props.citiesFiltered.map(city => <Card key={city._id} city={city} />) : <h1>No cities availables</h1>}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 const mapDispatchToProps = {
-  filterCities : citiesActions.filterCities
+  filterCities: citiesActions.filterCities
 }
 
-const mapStateToProps = (state =>{
+const mapStateToProps = (state => {
   return {
     cities: state.citiesReducer.cities,
     citiesFiltered: state.citiesReducer.citiesFiltered
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (PageCities);
+export default connect(mapStateToProps, mapDispatchToProps)(PageCities);

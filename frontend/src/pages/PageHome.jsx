@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
+import { motion } from 'framer-motion';
 
 const useScrollToTop = () => {
   const location = useLocation();
@@ -37,10 +38,13 @@ function PageHome({verification}) {
   const cities = useSelector(store => store.citiesReducer.cities)
 
   return (
-    <div className='body-home'>
+    <motion.div className='body-home'
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}>
       <Hero />
       <Carousel data={cities} />
-    </div>
+    </motion.div>
   )
 }
 

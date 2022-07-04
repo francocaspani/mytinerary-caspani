@@ -163,7 +163,7 @@ const Header = (props) => {
               <LinkRouter className='link' to='/' onClick={handleLogOut}><MenuItem onClick={handleCloseUserMenu}>
                 <Typography sx={{ color: 'black' }} textAlign="center">Log Out</Typography>
               </MenuItem></LinkRouter>
-              <LinkRouter className='link' to='/'><MenuItem onClick={handleCloseUserMenu}>
+              <LinkRouter className='link' to='/account'><MenuItem onClick={handleCloseUserMenu}>
               <Typography sx={{ color: 'black' }} textAlign="center">{userData.firstName}</Typography>
             </MenuItem></LinkRouter>
             </div>

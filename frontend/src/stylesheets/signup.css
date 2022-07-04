@@ -16,6 +16,7 @@
     background-color: rgba(0, 0, 0, 0.40);
 }
 
+
 .sign-up-container {
     display: flex;
     flex-direction: column;
@@ -27,6 +28,13 @@
 
 .logo-signup {
     height: 100px;
+}
+.signup-login{
+    font-size: large;
+    color: rgb(255, 255, 255);
+}
+.signup-login:hover{
+    text-decoration: underline;
 }
 
 .title-logo {
@@ -46,8 +54,10 @@
 }
 .signup-icons{
     display: flex;
-    gap: 1rem;
     cursor: pointer;
+}
+.google{
+    height: 1.6rem;
 }
 form {
     display: flex;
@@ -163,10 +173,6 @@ button:hover .border {
     font-size: large;
     text-align: center;
 }
-.link{
-    text-decoration: none;
-    color: white;
-  }
 
 @media screen and (max-width:768px) {
     .sign-up {

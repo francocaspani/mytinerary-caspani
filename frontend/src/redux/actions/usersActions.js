@@ -50,7 +50,7 @@ const usersActions = {
                 }).catch(error => {
                     if (error.response.status === 401)
                         dispatch({ type: 'logOutUser', payload: null }) 
-                    localStorage.removeItem('token')
+                        localStorage.removeItem('token')
                     return {
                         data:{
                             success: false,

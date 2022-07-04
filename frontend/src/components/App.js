@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Header from './Header';
 import bgvideo from '../video/bgvideo.mp4';
 import Footer from './Footer';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import PageHome from '../pages/PageHome';
 import PageUnderConstruction from '../pages/PageUnderConstruction';
 import PageCities from '../pages/PageCities';
@@ -12,11 +12,14 @@ import PageDetails from '../pages/PageDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
-import PageSignUpLogIn from '../pages/PageSignUpLogIn';
+import PageSignUp from '../pages/PageSignUp';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import usersActions from '../redux/actions/usersActions';
 import Swal from 'sweetalert2'
+import {AnimatePresence} from 'framer-motion'
+import PageLogIn from '../pages/PageLogIn';
+import PageAccount from '../pages/PageAccount';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -33,6 +36,8 @@ const Toast = Swal.mixin({
 })
 
 function App() {
+
+  const location = useLocation()
 
   const dispatch = useDispatch()
   const userData = useSelector(store => store.usersReducer.userData)
@@ -67,18 +72,20 @@ function App() {
       <video src={bgvideo} autoPlay loop muted className='video-bg'>
       </video>
       <Header pages={pages} />
-
-      <Routes>
+      <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
         <Route path='/home' element={<PageHome />} />
+        {userData &&<Route path='/account' element={<PageAccount />} />}
         <Route path='/' element={<PageHome />} />
         <Route path='/verification' element={<PageHome verification={true}/>} />
         <Route path='/underConstruction' element={<PageUnderConstruction />} />
         <Route path='/*' element={<PageHome />} />
         <Route path='/cities' element={<PageCities />} />
         <Route path='/cities/:id' element={<PageDetails />} />
-        {!userData && <Route path='/signup' element={<PageSignUpLogIn logIn={false} />} />}
-        {!userData && <Route path='/login' element={<PageSignUpLogIn logIn={true} />} />}
+        {!userData && <Route path='/signup' element={<PageSignUp />} />}
+        {!userData && <Route path='/login' element={<PageLogIn />} />}
       </Routes>
+      </AnimatePresence>
       <Footer pages={pages} />
       <ToastContainer />
       <ScrollToTop

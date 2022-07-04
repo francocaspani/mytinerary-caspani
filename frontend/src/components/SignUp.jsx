@@ -1,6 +1,3 @@
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import { useDispatch, useSelector } from "react-redux";
 import '../stylesheets/signup.css';
 import usersActions from "../redux/actions/usersActions";
@@ -68,7 +65,7 @@ export default function SignUp() {
                 confirmButtonColor: '#212121',
                 background: '#000000',
                 didClose: () => {
-                    if (res.data.succes){
+                    if (res.data.succes) {
                         navigate('/login')
                     }
                 }
@@ -104,8 +101,8 @@ export default function SignUp() {
         <>
             <div className="extern-signup">
                 <p>Sign in with:</p>
-                <div className='signup-icons'><span><FacebookIcon /></span>
-                    <span onClick={googleModal}><GoogleIcon />
+                <div className='signup-icons'>
+                    <span onClick={googleModal}><img className='google' src="http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png" alt="google logo" />
                         <SweetAlert2 {...swalProps}
                             willClose={() => {
                                 setSwalProps({
@@ -122,7 +119,7 @@ export default function SignUp() {
                             </div>
                         </SweetAlert2>
                     </span>
-                    <span><TwitterIcon /></span></div>
+                </div>
             </div>
             <div className='form'>
                 <p>or create an account</p>

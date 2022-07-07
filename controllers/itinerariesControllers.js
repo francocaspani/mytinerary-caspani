@@ -81,7 +81,7 @@ const itinerariesControllers = {
         let error = null
         try {
             itineraries = await Itinerary.find({ idCity: id })
-                .populate('activities').populate('comments.userId')
+                .populate('activities').populate('comments.userId',{ firstName: 1 , lastName:1, avatar:1}).populate('comments.replies.userId',{ firstName: 1 , lastName:1, avatar:1})
         } catch (err) { error = err }
         res.json({
             response: error ? 'ERROR' : { itineraries },
@@ -96,14 +96,14 @@ const itinerariesControllers = {
         try {
             itinerary = await Itinerary.find({ _id: idItinerary })
             itinerary = itinerary[0]
-            console.log('hola' + itinerary)
             if (itinerary.likes.length > 0) {
                 if (itinerary.likes.indexOf(idUser) === -1) {
                     itinerary.likes.push(idUser)
                     await itinerary.save()
                     res.json({
                         response: {itinerary},
-                        success: true
+                        success: true,
+                        message: 'Added to favourites'
                     })
                 } else {
                     const index = itinerary.likes.indexOf(idUser)
@@ -111,7 +111,8 @@ const itinerariesControllers = {
                     await itinerary.save()
                     res.json({
                         response: {itinerary},
-                        success: true
+                        success: true,
+                        message: 'Removed from favourites'
                     })
                 }
             } else {
@@ -119,14 +120,16 @@ const itinerariesControllers = {
                 await itinerary.save()
                 res.json({
                     response: {itinerary},
-                    success: true
+                    success: true,
+                    message: 'Added to favourites'
                 })
             }
         } catch (error) {
             console.log(error)
             res.json({
                 response: 'Error',
-                success: false
+                success: false,
+                message: 'Something went wrogn, please try again'
             })
         }
 

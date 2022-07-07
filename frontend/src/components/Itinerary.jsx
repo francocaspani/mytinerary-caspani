@@ -11,6 +11,7 @@ import "../stylesheets/itinerary.css"
 import Activities from "./Activities";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import Comments from "./Comments";
+import { toast } from 'react-toastify';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -101,16 +102,26 @@ const ListItem = ({ index, onClick, data, user }) => {
 };
 
 const ExpandedListItem = ({ index, onClick, data, setReload, user }) => {
-  // const [likes,setLikes] = useState(data.likes)
   const price = [...Array(data.price).keys()];
   const dispatch = useDispatch()
   const handleLike = async () =>{
     if (user){
       const token = localStorage.getItem('token')
       const res = await dispatch(itinerariesActions.handleLikes(data._id,token))
+      console.log(res)
       if(res.data.success){
-        // setLikes(res.data.response.itinerary.likes)
         setReload()
+        toast.success(res.data.message, {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 4000,
+      })
+      } else {
+        toast.error(res.data.message, {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 4000,
+      })
       }
     } else {
       Toast.fire({
@@ -184,7 +195,7 @@ const ExpandedListItem = ({ index, onClick, data, setReload, user }) => {
               <div className="additional-content">
                 <div>
                   <Activities data={data} />
-                  <Comments itinerary={data} />
+                  <Comments itinerary={data} setReload ={setReload}/>
                 </div>
                 <div>
                   <ArrowDropUpIcon sx={{ color: 'black', fontSize: '5rem', cursor: 'pointer' }} onClick={() => onClick(index)} />

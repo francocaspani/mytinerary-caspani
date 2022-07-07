@@ -26,9 +26,9 @@ const commentActions = {
             return res
         }
     },
-    deleteComment: (commentId, token) => {
+    deleteComment: (info, commentId, token) => {
         return async (dispatch, getState) => {
-            const res = await axios.post(`http://localhost:4000/api/itinerary/comment/${commentId}`, {}, {
+            const res = await axios.post(`http://localhost:4000/api/itinerary/comment/${commentId}`, {info}, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             return res
@@ -39,6 +39,7 @@ const commentActions = {
             const res = await axios.put(`http://localhost:4000/api/itinerary/comment/${commentId}`, {comment}, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
+            return res
         }
     }
 }

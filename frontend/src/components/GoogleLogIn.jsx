@@ -40,7 +40,7 @@ export default function GoogleLogIn() {
             title: res.data.message
         })
         if (res.data.success) {
-            navigate('/')
+            navigate(-1)
         }
     }
 

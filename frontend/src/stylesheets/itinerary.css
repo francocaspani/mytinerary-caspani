@@ -72,7 +72,6 @@
 }
 
 .expandedListItem {
-  cursor: pointer;
   background-color: #ffffffe0;
   border-radius: .5rem;
 }
@@ -92,8 +91,6 @@
 .additional-content>div {
   opacity: 0;
   border-radius: 3px;
-  background-color: gray;
-  height: 5rem;
 }
 
 /* content fade in animations */
@@ -153,6 +150,7 @@
 .likes {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .userName {

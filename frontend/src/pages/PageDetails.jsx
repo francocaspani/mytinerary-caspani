@@ -41,7 +41,7 @@ function PageDetails() {
                         <div className="text-details">
                             <h1 className="title-details">{city.name}</h1>
                             <h3>{city.country}</h3>
-                            {itinerariesByCity.length > 0 ? <Itinerary /> : <NonItinerary city={city.name} />}
+                            {itinerariesByCity.length > 0 ? <Itinerary idCity= {id} /> : <NonItinerary city={city.name} />}
                         </div>
                     </motion.div>
                 </>}

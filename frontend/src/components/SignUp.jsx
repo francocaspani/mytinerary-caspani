@@ -102,7 +102,7 @@ export default function SignUp() {
             <div className="extern-signup">
                 <p>Sign in with:</p>
                 <div className='signup-icons'>
-                    <span onClick={googleModal}><img className='google' src="http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png" alt="google logo" />
+                    <span onClick={googleModal}><img className='google' src={process.env.PUBLIC_URL + "/assets/img/google.png"} alt="google logo" />
                         <SweetAlert2 {...swalProps}
                             willClose={() => {
                                 setSwalProps({
@@ -121,7 +121,7 @@ export default function SignUp() {
                     </span>
                 </div>
             </div>
-            <div className='form'>
+            <div className='form-auth'>
                 <p>or create an account</p>
                 <form onSubmit={handleSubmit}>
                     <span className='input'>

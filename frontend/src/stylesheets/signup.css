@@ -67,7 +67,7 @@ form {
     align-items: center;
 }
 
-.form{
+.form-auth{
     color: white;
     display: flex;
     flex-direction: column;

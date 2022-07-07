@@ -40,7 +40,7 @@ function LogIn() {
         })
 
         if (res.data.success) {
-            navigate('/')
+            navigate(-1)
         }
 
 
@@ -48,7 +48,7 @@ function LogIn() {
 
     return (
         <>
-            <div className='form'>
+            <div className='form-auth'>
                 <form onSubmit={HandleSubmit}>
                     <span className='input'>
                         <input type="email" name="email" id="email" placeholder="Email" required />

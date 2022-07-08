@@ -1,10 +1,11 @@
 import axios from "axios";
+import { urlBackend } from "../../components/App";
 
 const itinerariesActions = {
     getItineraries: () => {
         return async (dispatch, getState) => {
             try {
-                const res = await axios.get('http://localhost:4000/api/itineraries')
+                const res = await axios.get(`${urlBackend}/itineraries`)
                 dispatch({type: 'getItineraries', payload: res.data.response.itineraries})
             }   catch(error){
                 console.log(error)
@@ -14,7 +15,7 @@ const itinerariesActions = {
     getItinerariesByCity: (id) => {
         return async (dispatch, getState) => {
             try {
-                const res = await axios.get(`http://localhost:4000/api/itinerariesByCity/${id}`)
+                const res = await axios.get(`${urlBackend}/itinerariesByCity/${id}`)
                 dispatch({type: 'getItinerariesByCity', payload: res.data.response.itineraries})
                 return res
             } catch(error){
@@ -25,7 +26,7 @@ const itinerariesActions = {
     handleLikes: (idItinerary,token) => {
         return async (dispatch, getState) => {
             try {
-                const res = await axios.post(`http://localhost:4000/api/likes/${idItinerary}`,{}, {
+                const res = await axios.post(`${urlBackend}/likes/${idItinerary}`,{}, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 return res

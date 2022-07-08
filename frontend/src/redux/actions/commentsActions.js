@@ -1,10 +1,11 @@
 import axios from "axios";
+import { urlBackend } from "../../components/App";
 
 const commentActions = {
     addComment: (comment, token) => {
         return async (dispatch, getState) => {
             if (comment.comment !== '') {
-                const res = await axios.post('http://localhost:4000/api/itinerary/comment', { comment }, {
+                const res = await axios.post(`${urlBackend}/itinerary/comment`, { comment }, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 return res
@@ -20,7 +21,7 @@ const commentActions = {
     },
     modifyComment: (comment, token) => {
         return async (dispatch, getState) => {
-            const res = await axios.put('http://localhost:4000/api/itinerary/comment', { comment }, {
+            const res = await axios.put(`${urlBackend}/itinerary/comment`, { comment }, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             return res
@@ -28,7 +29,7 @@ const commentActions = {
     },
     deleteComment: (info, commentId, token) => {
         return async (dispatch, getState) => {
-            const res = await axios.post(`http://localhost:4000/api/itinerary/comment/${commentId}`, {info}, {
+            const res = await axios.post(`${urlBackend}/itinerary/comment/${commentId}`, {info}, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             return res
@@ -36,7 +37,7 @@ const commentActions = {
     },
     replyComment: (comment,commentId, token) => {
         return async (dispatch, getState) => {
-            const res = await axios.put(`http://localhost:4000/api/itinerary/comment/${commentId}`, {comment}, {
+            const res = await axios.put(`${urlBackend}/itinerary/comment/${commentId}`, {comment}, {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             return res

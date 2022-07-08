@@ -21,6 +21,8 @@ import {AnimatePresence} from 'framer-motion'
 import PageLogIn from '../pages/PageLogIn';
 import PageAccount from '../pages/PageAccount';
 
+export const urlBackend = 'http://localhost:4000/api'
+
 const Toast = Swal.mixin({
   toast: true,
   position: 'bottom-start',

@@ -21,7 +21,7 @@ import {AnimatePresence} from 'framer-motion'
 import PageLogIn from '../pages/PageLogIn';
 import PageAccount from '../pages/PageAccount';
 
-export const urlBackend = 'http://localhost:4000/api'
+export const urlBackend = 'https://mytinerary-caspani-back.herokuapp.com'
 
 const Toast = Swal.mixin({
   toast: true,

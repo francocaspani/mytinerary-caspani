@@ -47,11 +47,7 @@ body{
   backdrop-filter: blur(1px);
   background-color: rgba(0, 0, 0, 0.40);
 }
-@media screen and (max-width : 425px){
-  .hero-container{
-    gap: .5rem
-  }  
-}
+
 .scrollToTop{
     position: fixed;
     right: 5%;
@@ -103,4 +99,20 @@ body{
   transition: 1s;
   background-color: white!important;
   color: black;
+}
+
+
+@media screen and (max-width : 425px){
+  .hero-container{
+    gap: .5rem
+  } 
+  .scrollToTop{
+    position: fixed;
+    right: 16%;
+    top: 82%;
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    border-style: none;
+    transition: .5s;
+} 
 }

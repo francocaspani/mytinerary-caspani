@@ -1,55 +1,106 @@
-.postBtn:hover{
-    background-color: rgb(56, 56, 56)!important;
+.overlay{
+    max-width: 100%!important;
+}
+.advanced-overlay{
+    max-width: 100%!important;
+}
+
+.advanced-form {
+    width: 100% !important;
+}
+.advanced-border {
+    border: none;
+    max-width: 100%!important;
+}
+.rdw-editor-wrapper {
+   width: 50vw !important
+}
+.rdw-editor-main {
+    height: auto !important;
+    max-width: 100% !important
+}
+.postBtn:hover {
+    background-color: rgb(56, 56, 56) !important;
     transition: .5s;
-    
+
 }
-.postBtn{
-    margin: .5rem!important
+
+
+
+.postBtn {
+    margin: .5rem !important
 }
-.cancelBtn{
-    margin: .5rem!important
+
+.cancelBtn {
+    margin: .5rem !important
 }
-.signBtn{
-    background-color: black!important;
-    border: 2px solid white!important;
-    margin: .2rem!important;
+
+.signBtn {
+    background-color: black !important;
+    border: 2px solid white !important;
+    margin: .2rem !important;
 }
-.loginBtn{
-    color: white!important;
-    border: 2px solid white!important;
-    margin: .2rem!important;
+
+.loginBtn {
+    color: white !important;
+    border: 2px solid white !important;
+    margin: .2rem !important;
 }
-.signLine{
-    color: rgba(0, 0, 0, 0.564)!important;
+
+.signLine {
+    color: rgba(0, 0, 0, 0.564) !important;
 }
-.infoStyle{
-    color: rgba(0, 0, 0, 0.564)!important;
-}
-.rdw-editor-main{
+
+
+
+.rdw-editor-main {
     overflow: hidden;
 }
-.advanced-border{
-    margin: .5rem;
-}
-.rdw-editor-toolbar{
+
+
+
+.rdw-editor-toolbar {
     padding: .2rem;
     border-radius: .5rem;
 }
-.rdw-dropdown-optionwrapper{
+
+.rdw-dropdown-optionwrapper {
     overflow-y: hidden;
 }
 
-.actionsBtn{
-    background-color: rgba(255, 255, 255, 0.527)!important;
+.actionsBtn {
+    background-color: rgba(255, 255, 255, 0.527) !important;
 }
-.react-responsive-modal-modal{
+
+.react-responsive-modal-modal {
     border-radius: .5rem;
 
 }
-.react-responsive-modal-closeButton{
+
+.react-responsive-modal-closeButton {
     top: 8px;
     right: 8px;
 }
-.deleteBtns{
+
+.deleteBtns {
     margin-top: .2rem;
 }
+
+
+
+
+@media screen and (max-width:768px) {
+    .overlay {
+        padding: 10px;
+    }
+    .rdw-editor-wrapper {
+        width: 75vw !important
+     }
+}
+
+
+@media screen and (max-width:425px) {
+    .rdw-editor-wrapper {
+        width: 65vw !important
+     }
+  }

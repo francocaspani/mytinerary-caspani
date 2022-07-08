@@ -1,7 +1,6 @@
 .container-activities {
     display: flex;
     z-index: 1;
-    
 }
 
 .panel {
@@ -14,7 +13,6 @@
     cursor: pointer;
     flex: 0.5;
     margin: 10px;
-    position: relative;
     transition: flex 0.7s ease-in;
 }
 
@@ -22,7 +20,6 @@
     font-size: 24px;
     position: absolute;
     bottom: 20px;
-    left: 20px;
     margin: 0;
     opacity: 0;
 }
@@ -30,9 +27,9 @@
     font-size: 15px;
     position: absolute;
     bottom: 50px;
-    left: 20px;
     margin: 0;
     opacity: 0;
+    width: 20%;
 }
 
 .panel.active {
@@ -49,16 +46,17 @@
     opacity: 1;
     transition: opacity 0.3s ease-in 0.4s;
     background-color: rgba(0, 0, 0, 0.4);
-    margin-right: .5rem;
 }
 
-/* @media (max-width: 400px) {
-    .container {
-        width: 100vw;
-    }
-
-    .panel:nth-of-type(4),
-    .panel:nth-of-type(5) {
-        display: none;
-    }
-} */
+@media (max-width: 768px) {
+.panel{
+    margin: 5px;
+}
+.panel p{
+    display: none;
+}
+.panel h3{
+    font-size: 1rem;
+    margin-right: .5rem;
+}
+}

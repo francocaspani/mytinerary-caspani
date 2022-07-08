@@ -195,6 +195,8 @@ const ExpandedListItem = ({ index, onClick, data, setReload, user }) => {
               <div className="additional-content">
                 <div>
                   <Activities data={data} />
+                </div>
+                <div>
                   <Comments itinerary={data} setReload ={setReload}/>
                 </div>
                 <div>
@@ -224,6 +226,7 @@ function Itinerary({idCity}) {
   useEffect(()=>{
     dispatch(itinerariesActions.getItinerariesByCity(idCity))
     .then(res => setItineraries(res.data.response.itineraries))
+    // eslint-disable-next-line
   },[reload])
 
   const onClickReload = () =>

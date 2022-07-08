@@ -59,7 +59,6 @@ const commentsControllers = {
                 })
             }
         }
-
     },
     deleteComment: async (req, res) => {
         const commentId = req.params.id

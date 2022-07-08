@@ -170,7 +170,22 @@
   color: black;
   text-align: center;
 }
+
+@media screen and (max-width:768px){
+  .staggered-list-content {
+    width: 95%
+  }
+  .listItemContent{
+    padding: .5rem;
+  }
+  .expandedListItemContent {
+    padding: .5rem;
+  }
+}
 @media screen and (max-width:425px) {
+  .staggered-list-content {
+    width: 100%
+  }
   .dollar {
     height: 20px;
     margin: .1rem;
@@ -178,5 +193,14 @@
 
   .hashtags {
     gap: .2rem;
+  }
+  .expandedListItem {
+    border-radius: 0
+  }
+  .listItem {
+    border-radius: 0
+  }
+  .avatar{
+    margin-right: .5rem;
   }
 }

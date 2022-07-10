@@ -25,6 +25,11 @@
 
 }
 
+.userLink, .userImg{
+    pointer-events: none;
+}
+
+
 
 
 .postBtn {
